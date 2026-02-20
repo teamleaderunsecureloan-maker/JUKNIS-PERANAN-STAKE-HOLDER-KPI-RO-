@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juknis KPI RO 2026 — Bank Woori Saudara</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0B1F3A; --blue:#1A4A8C; --accent:#C8922A; --accent-light:#E8B84B;
+  --green:#2A7A4A; --green-light:#3DAA6A; --red:#B83232; --red-light:#D94444;
+  --white:#F5F0E8; --wp:#FFFFFF; --grey:#8A9AB2;
+  --card:rgba(255,255,255,0.06); --border:rgba(200,146,42,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100vw;height:100vh;overflow:hidden;font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);}
+.deck{width:100vw;height:100vh;position:relative;overflow:hidden;}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .5s ease;overflow:hidden;}
+.slide.active{opacity:1;pointer-events:all;}
+
+/* NAV */
+.nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:10px;align-items:center;background:rgba(11,31,58,.92);backdrop-filter:blur(20px);border:1px solid var(--border);padding:10px 18px;border-radius:50px;z-index:1000;}
+.nbtn{background:none;border:1px solid var(--border);color:var(--white);cursor:pointer;padding:7px 16px;border-radius:30px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;transition:all .2s;}
+.nbtn:hover{background:var(--accent);border-color:var(--accent);color:var(--navy);}
+.ctr{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--grey);min-width:54px;text-align:center;}
+.dots{display:flex;gap:5px;align-items:center;flex-wrap:wrap;max-width:280px;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--grey);cursor:pointer;transition:all .2s;flex-shrink:0;}
+.dot.active{background:var(--accent);transform:scale(1.4);}
+.khint{position:fixed;top:18px;right:24px;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(138,154,178,.45);}
+.khint kbd{border:1px solid rgba(138,154,178,.25);border-radius:3px;padding:2px 5px;background:rgba(255,255,255,.03);}
+
+/* SLIDE INNER */
+.si{flex:1;display:flex;flex-direction:column;padding:clamp(18px,2.8vh,42px) clamp(28px,3.8vw,58px) clamp(58px,8vh,82px);position:relative;min-height:0;overflow:hidden;}
+.stag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:clamp(4px,.7vh,10px);flex-shrink:0;}
+.stitle{font-family:'DM Serif Display',serif;font-size:clamp(20px,2.6vw,36px);line-height:1.15;font-weight:400;color:var(--wp);margin-bottom:clamp(6px,.9vh,12px);flex-shrink:0;}
+.gline{width:50px;height:3px;background:var(--accent);margin-bottom:clamp(8px,1.2vh,16px);flex-shrink:0;}
+.sub{font-size:clamp(12px,1.2vw,14px);color:var(--grey);font-weight:300;line-height:1.6;max-width:680px;}
+.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,146,42,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+
+/* ── SLIDE 1 COVER ── */
+#s1{background:linear-gradient(135deg,#071428 0%,#0B1F3A 55%,#122847 100%);}
+.cov{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(40px,6vw,80px);position:relative;}
+.cbadge{display:inline-flex;align-items:center;gap:9px;background:rgba(200,146,42,.14);border:1px solid rgba(200,146,42,.38);padding:7px 14px;border-radius:4px;font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--accent-light);text-transform:uppercase;margin-bottom:clamp(18px,2.5vh,30px);width:fit-content;}
+.cbadge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+.ctitle{font-family:'DM Serif Display',serif;font-size:clamp(38px,6vw,78px);line-height:1.0;color:var(--wp);margin-bottom:6px;}
+.ctitle span{color:var(--accent);font-style:italic;}
+.csubt{font-family:'DM Serif Display',serif;font-size:clamp(18px,2.8vw,36px);color:var(--grey);font-weight:400;margin-bottom:clamp(20px,3vh,34px);}
+.cmeta{display:flex;gap:clamp(20px,3vw,38px);flex-wrap:wrap;}
+.cmi{border-left:2px solid var(--accent);padding-left:14px;}
+.cmi .lb{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);margin-bottom:3px;}
+.cmi .vl{font-size:14px;font-weight:600;color:var(--white);}
+.cdeco{position:absolute;right:clamp(40px,6vw,80px);top:50%;transform:translateY(-50%);width:clamp(180px,22vw,280px);height:clamp(180px,22vw,280px);border:1px solid rgba(200,146,42,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.cdeco::after{content:'';width:75%;height:75%;border:1px solid rgba(200,146,42,.1);border-radius:50%;position:absolute;}
+.cdeco-txt{font-family:'DM Serif Display',serif;font-size:clamp(36px,5vw,60px);color:rgba(200,146,42,.28);font-style:italic;}
+
+/* ── SLIDE 2 AGENDA ── */
+#s2{background:var(--navy);}
+.agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(7px,1vh,12px);margin-top:clamp(6px,1.2vh,14px);flex:1;min-height:0;}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:clamp(10px,1.4vh,18px) clamp(10px,1.2vw,16px);cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.acard:hover{border-color:var(--accent);background:rgba(200,146,42,.08);}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transition:transform .3s;transform-origin:left;}
+.acard:hover::before{transform:scaleX(1);}
+.anum{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);margin-bottom:clamp(3px,.6vh,8px);}
+.aicon{font-size:clamp(16px,2vh,24px);margin-bottom:clamp(3px,.5vh,8px);}
+.atitle{font-family:'DM Serif Display',serif;font-size:clamp(13px,1.3vw,17px);color:var(--wp);margin-bottom:clamp(3px,.5vh,6px);line-height:1.3;}
+.adesc{font-size:clamp(10px,.85vw,11px);color:var(--grey);line-height:1.5;}
+
+/* ── SLIDE 3 LATAR BELAKANG ── */
+#s3{background:linear-gradient(160deg,#071428 0%,#0B1F3A 100%);}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.2vw,32px);flex:1;margin-top:clamp(6px,1vh,14px);min-height:0;overflow:hidden;}
+.colhdr{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:clamp(6px,1vh,12px);}
+.plist,.slist{display:flex;flex-direction:column;gap:clamp(6px,1vh,12px);overflow:hidden;}
+.pitem,.sitem{display:flex;gap:clamp(8px,.9vw,12px);align-items:flex-start;padding:clamp(8px,1.1vh,13px) clamp(10px,1.1vw,15px);border-radius:7px;}
+.pitem{background:rgba(184,50,50,.08);border:1px solid rgba(184,50,50,.22);}
+.sitem{background:rgba(42,122,74,.08);border:1px solid rgba(42,122,74,.28);}
+.pico{font-size:clamp(14px,1.6vh,18px);flex-shrink:0;margin-top:1px;}
+.ptxt{font-size:clamp(11px,.95vw,13px);line-height:1.55;color:rgba(245,240,232,.85);}
+.ptxt strong{color:var(--wp);display:block;margin-bottom:2px;font-size:clamp(12px,1.1vw,14px);}
+
+/* ── SLIDE 4 STRUKTUR KPI ── */
+#s4{background:var(--navy);}
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(7px,.9vw,13px);flex:1;margin-top:clamp(6px,1vh,14px);min-height:0;}
+.kcard{border-radius:10px;padding:clamp(12px,1.6vh,22px) clamp(10px,1.2vw,18px);display:flex;flex-direction:column;}
+.kcard-a{background:linear-gradient(160deg,#1a3a6a,#122847);border:1px solid rgba(26,74,140,.6);}
+.kcard-b{background:linear-gradient(160deg,#2a5a3a,#1a3a28);border:1px solid rgba(42,90,60,.6);}
+.kcard-c{background:linear-gradient(160deg,#3a4a1a,#2a3a0a);border:1px solid rgba(80,100,20,.6);}
+.kcard-d{background:linear-gradient(160deg,#5a2a1a,#3a1a0a);border:1px solid rgba(160,80,40,.6);}
+.kkode{font-family:'DM Serif Display',serif;font-size:clamp(28px,4vh,46px);font-weight:400;line-height:1;margin-bottom:clamp(3px,.5vh,6px);color:var(--wp);}
+.kkomp{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(245,240,232,.45);margin-bottom:4px;}
+.kname{font-size:clamp(11px,1vw,13px);font-weight:600;color:var(--white);margin-bottom:clamp(8px,1.2vh,14px);line-height:1.4;}
+.kwt{font-family:'DM Serif Display',serif;font-size:clamp(22px,3vh,34px);font-style:italic;margin-bottom:2px;}
+.kwtlb{font-size:10px;color:rgba(245,240,232,.45);letter-spacing:.08em;margin-bottom:clamp(8px,1.2vh,14px);}
+.ktgt{font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.7);line-height:1.5;margin-top:auto;border-top:1px solid rgba(255,255,255,.1);padding-top:clamp(6px,.9vh,10px);}
+.ktgt b{color:var(--white);}
+.kebadge{display:inline-block;padding:3px 8px;background:rgba(255,255,255,.1);border-radius:20px;font-size:10px;margin-top:5px;}
+.kpi-a-w{color:#6A9FD8;} .kpi-b-w{color:#6AD89F;} .kpi-c-w{color:#B8D86A;} .kpi-d-w{color:#D8996A;}
+.knote{margin-top:clamp(8px,1.2vh,14px);padding:10px 16px;background:rgba(200,146,42,.07);border:1px solid rgba(200,146,42,.22);border-radius:7px;font-size:clamp(11px,.95vw,12px);color:rgba(245,240,232,.78);display:flex;gap:14px;flex-wrap:wrap;flex-shrink:0;}
+
+/* ── SLIDE 5 LEVEL ── */
+#s5{background:linear-gradient(160deg,#071428 0%,#0B1F3A 100%);}
+.ltable{flex:1;display:flex;flex-direction:column;margin-top:clamp(6px,1vh,14px);gap:clamp(5px,.8vh,11px);min-height:0;}
+.lrow{display:grid;grid-template-columns:155px 1fr 165px 165px;gap:2px;}
+.lrow.lhdr .lcell{background:rgba(200,146,42,.14);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;}
+.lcell{padding:clamp(7px,1vh,13px) clamp(10px,1.1vw,16px);background:var(--card);font-size:clamp(11px,.9vw,13px);border:1px solid var(--border);}
+.lcell:first-child{border-radius:6px 0 0 6px;} .lcell:last-child{border-radius:0 6px 6px 0;}
+.lbadge{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:clamp(11px,.95vw,13px);}
+.l-hi{color:#FFD700;} .l-med{color:#90EE90;} .l-low{color:#87CEEB;} .l-crit{color:#FF9999;}
+.tbwrap{display:flex;flex-direction:column;gap:5px;}
+.tbbg{height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;}
+.tbfill{height:100%;border-radius:3px;}
+.tval{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--wp);}
+.ndg{margin-top:auto;padding:clamp(10px,1.3vh,16px) clamp(12px,1.6vw,20px);background:rgba(42,122,74,.1);border:1px solid rgba(42,122,74,.32);border-radius:8px;display:flex;gap:12px;align-items:center;}
+.ndg-ico{font-size:clamp(16px,2vh,22px);}
+.ndg-txt{font-size:clamp(11px,.95vw,13px);line-height:1.55;color:rgba(245,240,232,.85);}
+.ndg-txt strong{color:#6AD89F;}
+
+/* ── SLIDE 6 FORMULA ── */
+#s6{background:var(--navy);}
+.fcols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.8vw,22px);flex:1;margin-top:clamp(6px,1vh,14px);min-height:0;overflow:hidden;}
+.fbox{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:clamp(10px,1.4vh,20px);display:flex;flex-direction:column;overflow:hidden;}
+.fboxtitle{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:clamp(6px,.9vh,12px);}
+.feq{font-family:'JetBrains Mono',monospace;font-size:clamp(11px,1vw,13px);background:rgba(11,31,58,.8);border:1px solid rgba(200,146,42,.2);border-radius:5px;padding:clamp(7px,1vh,12px) clamp(10px,1.1vw,15px);line-height:1.7;color:var(--wp);margin-bottom:clamp(7px,1vh,14px);}
+.feq .hl{color:var(--accent-light);}
+.zona-row{display:grid;grid-template-columns:14px auto 1fr auto;gap:10px;align-items:center;padding:clamp(9px,1.2vh,13px) clamp(12px,1.3vw,16px);border-radius:7px;margin-bottom:7px;}
+.zg{background:rgba(42,122,74,.12);border:1px solid rgba(42,122,74,.33);}
+.zy{background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.28);}
+.zr{background:rgba(184,50,50,.1);border:1px solid rgba(184,50,50,.28);}
+.zdot{width:12px;height:12px;border-radius:50%;}
+.dg{background:var(--green-light);} .dy{background:var(--accent);} .dr{background:var(--red-light);}
+.zname{font-weight:600;font-size:clamp(12px,1.1vw,14px);}
+.zscore{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--grey);}
+.zdesc{font-size:11px;color:rgba(245,240,232,.7);text-align:right;}
+.ovr{padding:clamp(9px,1.1vh,13px) clamp(12px,1.3vw,16px);background:rgba(184,50,50,.08);border:1px solid rgba(184,50,50,.28);border-left:3px solid var(--red-light);border-radius:0 7px 7px 0;font-size:clamp(11px,.95vw,12px);line-height:1.55;color:rgba(245,240,232,.85);margin-top:7px;}
+.ovr strong{color:#FF9999;}
+.reduce-box{margin-top:10px;padding:clamp(9px,1.1vh,13px) clamp(12px,1.3vw,16px);background:rgba(42,122,74,.08);border:1px solid rgba(42,122,74,.24);border-radius:7px;font-size:clamp(10px,.88vw,11px);color:rgba(245,240,232,.78);line-height:1.6;}
+.reduce-box strong{color:#6AD89F;}
+
+/* ── SLIDE 7 KPI OPS ── */
+#s7{background:linear-gradient(160deg,#071428 0%,#0B1F3A 100%);}
+.ops-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(7px,.9vw,11px);flex:1;margin-top:clamp(6px,1vh,13px);min-height:0;}
+.ocat{background:var(--card);border:1px solid var(--border);border-radius:9px;overflow:hidden;display:flex;flex-direction:column;}
+.ocat-hd{padding:clamp(8px,1.1vh,13px) clamp(9px,1vw,14px);display:flex;flex-direction:column;gap:3px;border-bottom:1px solid var(--border);}
+.oc1 .ocat-hd{background:rgba(26,74,140,.28);} .oc2 .ocat-hd{background:rgba(42,122,74,.28);}
+.oc3 .ocat-hd{background:rgba(100,60,140,.28);} .oc4 .ocat-hd{background:rgba(140,80,20,.28);}
+.ocat-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(245,240,232,.45);}
+.ocat-name{font-family:'DM Serif Display',serif;font-size:clamp(12px,1.1vw,15px);color:var(--wp);line-height:1.3;}
+.ocat-wt{font-family:'DM Serif Display',serif;font-size:clamp(16px,2.2vh,24px);font-style:italic;color:var(--accent);}
+.okpi-list{padding:clamp(7px,.9vh,11px) clamp(8px,.9vw,12px);display:flex;flex-direction:column;gap:clamp(4px,.55vh,6px);flex:1;overflow:hidden;}
+.okpi{display:flex;gap:7px;align-items:flex-start;font-size:clamp(10px,.82vw,11px);line-height:1.45;color:rgba(245,240,232,.8);padding:clamp(5px,.7vh,7px) clamp(7px,.8vw,10px);background:rgba(255,255,255,.03);border-radius:4px;border-left:2px solid rgba(200,146,42,.28);}
+.okpi-code{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0;margin-top:1px;}
+.ofoot{padding:0 clamp(8px,.9vw,12px) clamp(8px,1vh,11px);font-size:10px;color:var(--grey);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;margin-top:auto;}
+
+/* ── SLIDE 7b KPI OPS HITUNG ── */
+#s7b{background:var(--navy);}
+.calc-wrap{flex:1;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(14px,2vw,24px);margin-top:clamp(6px,1vh,14px);min-height:0;overflow:hidden;}
+.calc-left{display:flex;flex-direction:column;gap:clamp(8px,1.1vh,14px);overflow:hidden;}
+.calc-right{display:flex;flex-direction:column;gap:clamp(8px,1.1vh,14px);overflow:hidden;}
+.calc-section-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:clamp(4px,.6vh,8px);flex-shrink:0;}
+.formula-big{background:rgba(11,31,58,.9);border:1px solid rgba(200,146,42,.3);border-radius:8px;padding:clamp(10px,1.4vh,18px);font-family:'JetBrains Mono',monospace;font-size:clamp(11px,1vw,13px);line-height:1.9;color:var(--wp);}
+.formula-big .hl{color:var(--accent-light);} .formula-big .cm{color:var(--grey);}
+.cat-weight-row{display:flex;flex-direction:column;gap:clamp(5px,.7vh,9px);}
+.cwr-item{display:flex;align-items:center;gap:10px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,14px);background:var(--card);border:1px solid var(--border);border-radius:6px;}
+.cwr-cat{font-size:clamp(11px,.95vw,12px);color:var(--wp);font-weight:500;flex:1;}
+.cwr-wt{font-family:'JetBrains Mono',monospace;font-size:clamp(14px,1.6vh,18px);color:var(--accent);font-weight:600;width:42px;text-align:right;flex-shrink:0;}
+.cwr-bar-bg{height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;flex:1;}
+.cwr-bar-fill{height:100%;border-radius:3px;}
+.example-box{background:rgba(200,146,42,.07);border:1px solid rgba(200,146,42,.25);border-radius:8px;padding:clamp(10px,1.3vh,16px);}
+.ex-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent);margin-bottom:clamp(8px,1vh,12px);}
+.ex-rows{display:flex;flex-direction:column;gap:clamp(5px,.7vh,8px);}
+.ex-row{display:grid;grid-template-columns:1fr 80px 80px 80px;gap:8px;align-items:center;font-size:clamp(10px,.85vw,12px);}
+.ex-row.ex-hdr{color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;border-bottom:1px solid var(--border);padding-bottom:5px;text-transform:uppercase;}
+.ex-row-data{color:rgba(245,240,232,.85);}
+.ex-row-data .ex-val{font-family:'JetBrains Mono',monospace;text-align:right;}
+.ex-row-data .ex-wt{color:var(--grey);text-align:right;}
+.ex-row-data .ex-contrib{color:var(--accent-light);text-align:right;font-weight:600;}
+.ex-total{margin-top:8px;padding-top:8px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.ex-total-lbl{font-size:clamp(12px,1.1vw,13px);font-weight:600;color:var(--wp);}
+.ex-total-score{font-family:'DM Serif Display',serif;font-size:clamp(22px,2.8vh,32px);color:var(--green-light);font-style:italic;}
+.override-note{padding:clamp(8px,1vh,12px) clamp(10px,1.2vw,14px);background:rgba(184,50,50,.09);border:1px solid rgba(184,50,50,.3);border-left:3px solid var(--red-light);border-radius:0 6px 6px 0;font-size:clamp(10px,.85vw,12px);line-height:1.55;color:rgba(245,240,232,.85);}
+.override-note strong{color:#FF9999;}
+
+/* ── SLIDE 8 SANKSI (REVISED) ── */
+#s8{background:var(--navy);}
+.sanksi-wrap{flex:1;display:flex;flex-direction:column;gap:clamp(6px,.9vh,10px);margin-top:clamp(4px,.7vh,10px);min-height:0;overflow:hidden;}
+.sanksi-top{display:flex;gap:clamp(6px,.8vw,10px);}
+.sanksi-bottom{display:grid;grid-template-columns:1fr 1fr;gap:clamp(6px,.8vw,10px);}
+.sanksi-cutoff{background:rgba(200,146,42,.07);border:1px solid rgba(200,146,42,.35);border-radius:8px;padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,16px);}
+.sc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:clamp(8px,1.1vh,14px);display:flex;flex-direction:column;gap:clamp(4px,.6vh,7px);flex:1;}
+.sc-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;}
+.sc-title{font-size:clamp(11px,1vw,13px);font-weight:600;color:var(--wp);}
+.sc-desc{font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.72);line-height:1.5;}
+.sc-trigger{font-size:clamp(9px,.75vw,10px);color:rgba(245,240,232,.45);font-style:italic;border-top:1px solid rgba(255,255,255,.07);padding-top:5px;margin-top:3px;}
+.sc-yellow{background:rgba(200,146,42,.09);border-color:rgba(200,146,42,.28);}
+.sc-red0{background:rgba(184,50,50,.08);border-color:rgba(184,50,50,.22);}
+.sc-red1{background:rgba(184,50,50,.11);border-color:rgba(184,50,50,.28);}
+.sc-red2{background:rgba(184,50,50,.16);border-color:rgba(184,50,50,.38);}
+.sc-red3{background:rgba(184,50,50,.22);border-color:rgba(184,50,50,.5);}
+.sc-spv{background:rgba(100,60,140,.12);border:1px solid rgba(140,80,200,.3);border-radius:8px;padding:clamp(8px,1.1vh,14px);}
+.sc-unit{background:rgba(26,74,140,.12);border:1px solid rgba(60,100,200,.3);border-radius:8px;padding:clamp(8px,1.1vh,14px);}
+.spanel-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:clamp(5px,.7vh,8px);}
+.spanel-body{font-size:clamp(10px,.82vw,11px);line-height:1.6;color:rgba(245,240,232,.8);}
+.spanel-body strong{color:var(--wp);}
+.stlist{display:flex;flex-direction:column;gap:clamp(3px,.5vh,5px);margin-top:clamp(4px,.6vh,7px);}
+.stitem{font-size:clamp(10px,.82vw,11px);line-height:1.45;color:rgba(245,240,232,.75);padding:4px 8px 4px 10px;border-left:2px solid rgba(200,146,42,.3);}
+
+/* ── SLIDE 9 DATABASE (REVISED) ── */
+#s9{background:linear-gradient(160deg,#071428 0%,#0B1F3A 100%);}
+.db-intro{margin-bottom:clamp(8px,1.1vh,14px);padding:clamp(8px,1.1vh,12px) clamp(12px,1.4vw,18px);background:rgba(200,146,42,.06);border:1px solid rgba(200,146,42,.2);border-radius:7px;font-size:clamp(11px,.9vw,13px);color:rgba(245,240,232,.82);line-height:1.65;flex-shrink:0;}
+.db-intro strong{color:var(--accent-light);}
+.db-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.4vw,18px);flex:1;min-height:0;}
+.dbc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:clamp(14px,1.7vh,22px);display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.dbc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.dbc-1::before{background:linear-gradient(90deg,#6A9FD8,#3A7ABD);}
+.dbc-2::before{background:linear-gradient(90deg,#6AD89F,#2A9A5A);}
+.dbc-3::before{background:linear-gradient(90deg,#D8B86A,#B88A30);}
+.db-num{font-family:'DM Serif Display',serif;font-size:48px;color:rgba(200,146,42,.18);position:absolute;right:14px;top:6px;line-height:1;}
+.db-icon{font-size:clamp(20px,2.5vh,28px);margin-bottom:clamp(7px,.9vh,12px);}
+.db-title{font-family:'DM Serif Display',serif;font-size:clamp(15px,1.4vw,19px);color:var(--wp);margin-bottom:clamp(6px,.8vh,10px);line-height:1.3;}
+.db-desc{font-size:clamp(11px,.9vw,12px);color:var(--grey);line-height:1.55;margin-bottom:clamp(8px,1vh,14px);}
+.db-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:clamp(8px,1vh,12px);border-top:1px solid var(--border);}
+.db-tag-lbl{font-size:10px;color:var(--grey);width:100%;margin-bottom:3px;}
+.dbtag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;background:rgba(200,146,42,.11);border:1px solid rgba(200,146,42,.24);border-radius:3px;color:var(--accent-light);}
+.db-flow{margin-top:clamp(10px,1.3vh,16px);padding:clamp(9px,1.2vh,14px) clamp(14px,1.7vw,20px);background:rgba(200,146,42,.05);border:1px solid rgba(200,146,42,.18);border-radius:7px;flex-shrink:0;}
+.db-flow-title{font-size:11px;color:var(--accent);margin-bottom:7px;letter-spacing:.06em;}
+.db-flow-steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.db-fstep{font-size:11px;font-weight:600;color:var(--white);padding:5px 11px;background:var(--card);border:1px solid var(--border);border-radius:4px;}
+.db-farrow{color:var(--accent);font-size:13px;}
+
+/* ── SLIDE 10 STAKEHOLDER (REVISED) ── */
+#s10{background:var(--navy);}
+#s11{background:linear-gradient(160deg,#071428 0%,#0B1F3A 100%);}
+.ho-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.3vh,16px);flex:1;margin-top:clamp(6px,1vh,14px);min-height:0;}
+.hocard{background:var(--card);border:1px solid rgba(200,146,42,.38);border-radius:10px;padding:clamp(12px,1.5vh,20px);display:flex;flex-direction:column;gap:clamp(7px,.9vh,12px);overflow:hidden;}
+.hocard-hdr{display:flex;align-items:flex-start;gap:12px;}
+.hocard-ico{width:40px;height:40px;background:rgba(200,146,42,.14);border:1px solid rgba(200,146,42,.32);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.hocard-name{font-family:'DM Serif Display',serif;font-size:clamp(15px,1.4vw,18px);color:var(--wp);line-height:1.2;}
+.hocard-dom{font-size:11px;color:var(--accent);font-weight:500;margin-top:2px;}
+.hocard-func{font-size:clamp(11px,.9vw,12px);color:rgba(245,240,232,.85);line-height:1.55;padding:clamp(8px,1vh,12px) clamp(10px,1.2vw,14px);background:rgba(200,146,42,.05);border-radius:5px;border-left:2px solid rgba(200,146,42,.38);}
+.hocard-tasks{display:flex;flex-direction:column;gap:5px;}
+.hotask{display:flex;gap:7px;align-items:flex-start;font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.72);line-height:1.45;}
+.hotask-bullet{color:var(--accent);flex-shrink:0;margin-top:2px;}
+
+/* ── SLIDE 12 JADWAL ── */
+#s12{background:var(--navy);}
+.tw-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,1.5vw,18px);flex:1;margin-top:clamp(4px,.8vh,10px);min-height:0;overflow:hidden;}
+.tw-wrap{position:relative;display:flex;flex-direction:column;gap:0;}
+.tw-line{position:absolute;left:108px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),rgba(200,146,42,.15));}
+.twitem{display:flex;gap:0;align-items:flex-start;padding-bottom:clamp(7px,1vh,13px);}
+.twdate{width:108px;padding-right:24px;text-align:right;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--accent);padding-top:3px;}
+.twdot{width:13px;height:13px;border-radius:50%;background:var(--accent);border:3px solid var(--navy);flex-shrink:0;margin-top:3px;margin-left:-6px;margin-right:18px;position:relative;z-index:2;}
+.twcon{flex:1;background:var(--card);border:1px solid var(--border);border-radius:7px;padding:clamp(7px,1vh,11px) clamp(10px,1.2vw,15px);}
+.twphase{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.twtitle{font-size:clamp(12px,1.1vw,14px);font-weight:600;color:var(--wp);margin-bottom:3px;}
+.twdesc{font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.68);line-height:1.45;}
+.twout{margin-top:6px;display:flex;flex-wrap:wrap;gap:5px;}
+.outtag{font-size:10px;padding:2px 9px;background:rgba(42,122,74,.14);border:1px solid rgba(42,122,74,.28);border-radius:20px;color:#6AD89F;}
+.tw-right{display:flex;flex-direction:column;gap:clamp(6px,.9vh,10px);overflow:hidden;}
+.tw-section-title{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;flex-shrink:0;}
+.siklus-table{display:flex;flex-direction:column;gap:2px;}
+.srow2{display:grid;grid-template-columns:110px 1fr 140px;gap:2px;}
+.scell{padding:clamp(6px,.85vh,10px) clamp(8px,.9vw,12px);background:var(--card);font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border:1px solid var(--border);}
+.scell:first-child{border-radius:5px 0 0 5px;} .scell:last-child{border-radius:0 5px 5px 0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent);}
+.srow2.shdr .scell{background:rgba(200,146,42,.12);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;}
+.format-list{display:flex;flex-direction:column;gap:clamp(4px,.55vh,7px);}
+.fmt-item{display:flex;gap:8px;align-items:flex-start;padding:clamp(6px,.85vh,9px) clamp(8px,.9vw,12px);background:var(--card);border:1px solid var(--border);border-radius:5px;}
+.fmt-icon{font-size:clamp(13px,1.5vh,16px);flex-shrink:0;}
+.fmt-txt{font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;}
+.fmt-txt strong{color:var(--wp);display:block;}
+
+/* ── SLIDE 13 CLOSING ── */
+#s13{background:linear-gradient(135deg,#071428 0%,#0B1F3A 55%,#0a1830 100%);}
+.cls-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 clamp(40px,6vw,80px);position:relative;}
+.cls-ring{position:absolute;border-radius:50%;pointer-events:none;}
+.cls-lbl{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:clamp(16px,2.4vh,28px);}
+.cls-title{font-family:'DM Serif Display',serif;font-size:clamp(32px,5vw,60px);color:var(--wp);margin-bottom:clamp(12px,1.8vh,20px);line-height:1.15;}
+.cls-sub{font-size:clamp(13px,1.3vw,15px);color:var(--grey);max-width:580px;line-height:1.7;margin-bottom:clamp(24px,3.5vh,38px);}
+.pillars{display:flex;gap:clamp(10px,1.5vw,20px);justify-content:center;flex-wrap:wrap;}
+.pillar{padding:clamp(10px,1.3vh,14px) clamp(16px,2vw,22px);border:1px solid var(--border);border-radius:6px;font-size:clamp(12px,1.2vw,14px);font-weight:600;color:var(--white);background:rgba(200,146,42,.08);}
+.cls-contact{margin-top:clamp(22px,3vh,36px);font-size:13px;color:var(--grey);}
+.cls-contact strong{color:var(--accent);}
+.si { transform-origin: top left; }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- ── S1: COVER ── -->
+<div class="slide active" id="s1">
+  <div class="bg-grid"></div>
+  <div style="position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(200,146,42,.07),transparent 70%);right:-80px;top:-80px;border-radius:50%;pointer-events:none;"></div>
+  <div class="cov">
+    <div class="cbadge">Versi 1.0 &nbsp;|&nbsp; Berlaku Maret 2026</div>
+    <div class="ctitle">Petunjuk Teknis<br><span>KPI RO</span></div>
+    <div class="csubt">Relationship Officer 2026</div>
+    <div class="cmeta">
+      <div class="cmi"><div class="lb">Divisi</div><div class="vl">Bisnis Pensiun & Consumer</div></div>
+      <div class="cmi"><div class="lb">Bank</div><div class="vl">Woori Saudara</div></div>
+      <div class="cmi"><div class="lb">Mulai Berlaku</div><div class="vl">Maret 2026</div></div>
+      <div class="cmi"><div class="lb">Versi</div><div class="vl">Full Implementation</div></div>
+    </div>
+  </div>
+  <div class="cdeco"><div class="cdeco-txt">RO</div></div>
+</div>
+
+<!-- ── S2: AGENDA ── -->
+<div class="slide" id="s2">
+  <div class="si">
+    <div class="stag">00 — Overview</div>
+    <h2 class="stitle">Apa yang akan kita bahas?</h2>
+    <div class="gline"></div>
+    <div class="agrid">
+      <div class="acard" onclick="goTo(2)"><div class="aicon">📋</div><div class="anum">01</div><div class="atitle">Latar Belakang & Tujuan</div><div class="adesc">Mengapa sistem baru ini diperlukan dan apa yang ingin dicapai</div></div>
+      <div class="acard" onclick="goTo(3)"><div class="aicon">📊</div><div class="anum">02</div><div class="atitle">Struktur KPI</div><div class="adesc">4 komponen, bobot, target, dan siklus evaluasi</div></div>
+      <div class="acard" onclick="goTo(4)"><div class="aicon">🎯</div><div class="anum">03</div><div class="atitle">Level & Target RO</div><div class="adesc">Penetapan level, mekanisme upgrade, aturan no-downgrade</div></div>
+      <div class="acard" onclick="goTo(5)"><div class="aicon">🧮</div><div class="anum">04</div><div class="atitle">Formula & Zona Kinerja</div><div class="adesc">Cara menghitung skor akhir dan Green/Yellow/Red Zone</div></div>
+      <div class="acard" onclick="goTo(6)"><div class="aicon">🔍</div><div class="anum">05</div><div class="atitle">KPI Operasional Portofolio</div><div class="adesc">4 kategori, 17 sub-KPI + cara penghitungan Skor D</div></div>
+      <div class="acard" onclick="goTo(8)"><div class="aicon">⚠️</div><div class="anum">06</div><div class="atitle">Coaching & Sanksi</div><div class="adesc">Eskalasi RO, tanggung jawab SPV & Unit Bisnis</div></div>
+      <div class="acard" onclick="goTo(9)"><div class="aicon">👥</div><div class="anum">07</div><div class="atitle">Peran Stakeholder & HO</div><div class="adesc">Akuntabilitas berlapis dari RO hingga Head Office</div></div>
+      <div class="acard" onclick="goTo(13)"><div class="aicon">📅</div><div class="anum">08</div><div class="atitle">Jadwal & Pelaporan</div><div class="adesc">Timeline implementasi bertahap dan format laporan KPI</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S3: LATAR BELAKANG ── -->
+<div class="slide" id="s3">
+  <div class="si">
+    <div class="stag">01 — Latar Belakang</div>
+    <h2 class="stitle">Mengapa sistem ini dibutuhkan?</h2>
+    <div class="gline"></div>
+    <div class="twocol">
+      <div>
+        <div class="colhdr" style="color:#FF9999;">Masalah yang ditemukan</div>
+        <div class="plist">
+          <div class="pitem"><div class="pico">📉</div><div class="ptxt"><strong>Produktivitas menurun signifikan</strong>Isu eksternal & penghentian program internal di 2025 berdampak langsung pada kinerja RO</div></div>
+          <div class="pitem"><div class="pico">⚖️</div><div class="ptxt"><strong>KPI hanya mengukur produksi</strong>Sistem lama hanya menilai nilai disburse, tanpa melihat kualitas pengelolaan portofolio</div></div>
+          <div class="pitem"><div class="pico">🔀</div><div class="ptxt"><strong>Perbedaan interpretasi di lapangan</strong>Tidak ada panduan teknis seragam → penilaian menjadi tidak konsisten dan mudah berubah-ubah</div></div>
+          <div class="pitem"><div class="pico">❓</div><div class="ptxt"><strong>Peran & akuntabilitas belum terlalu spesifik</strong>Tanggung jawab tiap level belum terdefinisi secara formal</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="colhdr" style="color:#6AD89F;">Solusi yang ditawarkan Juknis ini</div>
+        <div class="slist">
+          <div class="sitem"><div class="pico">✅</div><div class="ptxt"><strong>Panduan teknis seragam</strong>Mencakup seluruh proses: penetapan level, hitung skor, coaching, hingga sanksi</div></div>
+          <div class="sitem"><div class="pico">📐</div><div class="ptxt"><strong>Integrasikan kualitas portofolio (30%)</strong>KPI Operasional mengukur seberapa baik RO mengelola kredit yang sudah berjalan</div></div>
+          <div class="sitem"><div class="pico">🏗️</div><div class="ptxt"><strong>Sistem berlapis yang jelas</strong>Setiap level punya fungsi kontrol berbeda — tidak ada duplikasi kerja</div></div>
+          <div class="sitem"><div class="pico">🔄</div><div class="ptxt"><strong>Evaluasi triwulanan</strong>Juknis ini hidup dan akan diperbarui berdasarkan feedback lapangan</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S4: STRUKTUR KPI ── -->
+<div class="slide" id="s4">
+  <div class="si">
+    <div class="stag">02 — Komponen KPI</div>
+    <h2 class="stitle">Struktur 4 Komponen KPI</h2>
+    <div class="gline"></div>
+    <div class="kgrid">
+      <div class="kcard kcard-a"><div class="kkomp">Komponen</div><div class="kkode">A</div><div class="kname">Kredit Pensiun &<br>Kredit Pegawai</div><div class="kwt kpi-a-w">50%</div><div class="kwtlb">BOBOT</div><div class="ktgt"><b>Target:</b> Dinamis per level RO<br><span class="kebadge">📅 Evaluasi Bulanan</span></div></div>
+      <div class="kcard kcard-b"><div class="kkomp">Komponen</div><div class="kkode">B</div><div class="kname">Kredit Pemilikan<br>Rumah (KPH)</div><div class="kwt kpi-b-w">10%</div><div class="kwtlb">BOBOT</div><div class="ktgt"><b>Target:</b> Rp 250 juta / 3 bulan<br><span class="kebadge">📅 Triwulanan (bln ke-3)</span></div></div>
+      <div class="kcard kcard-c"><div class="kkomp">Komponen</div><div class="kkode">C</div><div class="kname">Kredit Kendaraan<br>Bermotor (KPKB)</div><div class="kwt kpi-c-w">10%</div><div class="kwtlb">BOBOT</div><div class="ktgt"><b>Target:</b> Rp 250 juta / 3 bulan<br><span class="kebadge">📅 Triwulanan (bln ke-3)</span></div></div>
+      <div class="kcard kcard-d"><div class="kkomp">Komponen</div><div class="kkode">D</div><div class="kname">KPI Operasional<br>Portofolio</div><div class="kwt kpi-d-w">30%</div><div class="kwtlb">BOBOT</div><div class="ktgt"><b>4 sub-kategori:</b><br>Kepastian 40% · Mekanisme 30%<br>Proteksi 20% · Transisi 10%<br><span class="kebadge">📅 Evaluasi Bulanan</span></div></div>
+    </div>
+    <div class="knote">
+      <span>💡 <strong style="color:var(--accent)">Bulan biasa:</strong> Bobot dinormalisasi → A = 62,5% | D = 37,5%</span>
+      <span>📐 <strong style="color:var(--accent)">Bulan triwulan:</strong> A (50%) + B (10%) + C (10%) + D (30%) = 100%</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── S5: LEVEL PERFORMER ── -->
+<div class="slide" id="s5">
+  <div class="si">
+    <div class="stag">03 — Level & Target RO</div>
+    <h2 class="stitle">Sistem Level Performer</h2>
+    <div class="gline"></div>
+    <div class="ltable">
+      <div class="lrow lhdr"><div class="lcell">Level</div><div class="lcell">Target Bulanan</div><div class="lcell">Range Kategori</div><div class="lcell">Dasar Penetapan</div></div>
+      <div class="lrow"><div class="lcell"><span class="lbadge l-hi">⭐ High Performer</span></div><div class="lcell"><div class="tbwrap"><div class="tval">Rp 1.500 juta / bulan</div><div class="tbbg"><div class="tbfill" style="width:100%;background:linear-gradient(90deg,#FFD700,#FFA500);"></div></div></div></div><div class="lcell" style="font-size:12px;color:var(--grey);">&gt; Rp 1.000 juta</div><div class="lcell" style="font-size:11px;color:var(--grey);">Rata-rata disburse 2025 atau 3 bln terakhir (ambil yg lebih besar)</div></div>
+      <div class="lrow"><div class="lcell"><span class="lbadge l-med">🟢 Medium Performer</span></div><div class="lcell"><div class="tbwrap"><div class="tval">Rp 1.000 juta / bulan</div><div class="tbbg"><div class="tbfill" style="width:67%;background:linear-gradient(90deg,#90EE90,#32CD32);"></div></div></div></div><div class="lcell" style="font-size:12px;color:var(--grey);">&gt; Rp 600 juta</div><div class="lcell" style="font-size:11px;color:var(--grey);">SPV & PC tetapkan sebelum Trial Run Maret 2026</div></div>
+      <div class="lrow"><div class="lcell"><span class="lbadge l-low">🔵 Low Performer</span></div><div class="lcell"><div class="tbwrap"><div class="tval">Rp 600 juta / bulan</div><div class="tbbg"><div class="tbfill" style="width:40%;background:linear-gradient(90deg,#87CEEB,#4169E1);"></div></div></div></div><div class="lcell" style="font-size:12px;color:var(--grey);">&gt; Rp 300 juta</div><div class="lcell" style="font-size:11px;color:var(--grey);">Dikomunikasikan tertulis ke RO sebelum Trial Run</div></div>
+      <div class="lrow"><div class="lcell"><span class="lbadge l-crit">🔴 Critical Performer</span></div><div class="lcell"><div class="tbwrap"><div class="tval">Rp 300 juta / bulan</div><div class="tbbg"><div class="tbfill" style="width:20%;background:linear-gradient(90deg,#FF9999,#FF4444);"></div></div></div></div><div class="lcell" style="font-size:12px;color:var(--grey);">Rp 0 – 300 juta</div><div class="lcell" style="font-size:11px;color:var(--grey);">Evaluasi rolling 3 bulan sejak April 2026</div></div>
+      <div class="ndg">
+        <div class="ndg-ico">🛡️</div>
+        <div class="ndg-txt"><strong>Aturan No Downgrade:</strong> Level tidak pernah turun. Penurunan performa hanya tercermin di <strong>zona kinerja (Green/Yellow/Red)</strong> yang memicu coaching & sanksi — bukan penurunan level.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S6: FORMULA ── -->
+<div class="slide" id="s6">
+  <div class="si">
+    <div class="stag">04 — Formula & Zona Kinerja</div>
+    <h2 class="stitle">Menghitung Skor Akhir</h2>
+    <div class="gline"></div>
+    <div class="fcols">
+      <div class="fbox">
+        <div class="fboxtitle">📅 Bulan Biasa (Bln 1, 2, 4, 5)</div>
+        <div class="feq">Skor = (<span class="hl">A × 62,5%</span>) + (<span class="hl">D × 37,5%</span>)<br><span style="font-size:10px;opacity:.55;">B & C tidak dievaluasi → bobot dinormalisasi</span></div>
+        <div class="fboxtitle">📐 Bulan Triwulan (Bln 3, 6, 9, 12)</div>
+        <div class="feq">Skor = (<span class="hl">A×50%</span>) + (<span class="hl">B×10%</span>) + (<span class="hl">C×10%</span>) + (<span class="hl">D×30%</span>)</div>
+        <div class="fboxtitle">🔢 Formula Komponen A</div>
+        <div class="feq">Skor A = (Realisasi ÷ Target Level) × 100</div>
+        <div class="fboxtitle">🏗️ Formula Skor D</div>
+        <div class="feq">Skor D = (Kat.1×<span class="hl">40%</span>) + (Kat.2×<span class="hl">30%</span>)<br>       + (Kat.3×<span class="hl">20%</span>) + (Kat.4×<span class="hl">10%</span>)</div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:11px;">Zona Kinerja</div>
+        <div class="zona-row zg"><div class="zdot dg"></div><div class="zname" style="color:#6AD89F;">🟢 GREEN</div><div class="zscore">Skor ≥ 80</div><div class="zdesc">On Track — Evaluasi rutin</div></div>
+        <div class="zona-row zy"><div class="zdot dy"></div><div class="zname" style="color:var(--accent-light);">🟡 YELLOW</div><div class="zscore">Skor 60–79</div><div class="zdesc">Coaching dalam 7 hari kerja</div></div>
+        <div class="zona-row zr"><div class="zdot dr"></div><div class="zname" style="color:#FF9999;">🔴 RED</div><div class="zscore">Skor &lt; 60</div><div class="zdesc">Coaching wajib + RTL tertulis</div></div>
+        <div class="ovr"><strong>⚡ Override Rule:</strong> Jika Skor KPI Operasional (Komponen D) &lt; 50%, RO <strong>otomatis masuk Red Zone</strong> terlepas dari skor total. Tidak ada pengecualian.</div>
+        <div class="reduce-box" style="margin-top:10px;"><strong>🏆 Pengurangan & Penghapusan Sanksi</strong><br>Green dalam &lt;3 bln → Sanksi turun 1 level<br>Green 3 bln berturut-turut → Sanksi dihapus sepenuhnya</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S7: KPI OPERASIONAL ── -->
+<div class="slide" id="s7">
+  <div class="si">
+    <div class="stag">05 — KPI Operasional Portofolio</div>
+    <h2 class="stitle">Komponen D — 4 Kategori, 17 Sub-KPI</h2>
+    <div class="gline"></div>
+    <div class="ops-grid">
+      <div class="ocat oc1">
+        <div class="ocat-hd"><div class="ocat-num">KATEGORI 1 · BOBOT</div><div class="ocat-name">Kepastian Sumber Pembayaran</div><div class="ocat-wt">40%</div></div>
+        <div class="okpi-list">
+          <div class="okpi"><span class="okpi-code">1.1</span>Status Kantor Bayar di BWS</div>
+          <div class="okpi"><span class="okpi-code">1.2</span>Identifikasi Nomor Pensiun per Loan</div>
+          <div class="okpi"><span class="okpi-code">1.3</span>Monitoring Gaji Masuk Bulanan</div>
+          <div class="okpi"><span class="okpi-code">1.4</span>Deteksi Penurunan Gaji &gt;10%</div>
+          <div class="okpi"><span class="okpi-code">1.5</span>Monitoring Angsuran Masuk Pegawai Aktif</div>
+          <div class="okpi"><span class="okpi-code">1.6</span>Status Pernikahan Debitur Janda</div>
+        </div>
+      </div>
+      <div class="ocat oc2">
+        <div class="ocat-hd"><div class="ocat-num">KATEGORI 2 · BOBOT</div><div class="ocat-name">Mekanisme Pembayaran</div><div class="ocat-wt">30%</div></div>
+        <div class="okpi-list">
+          <div class="okpi"><span class="okpi-code">2.1</span>Monitoring Standing Instruction Multi-Fasilitas</div>
+          <div class="okpi"><span class="okpi-code">2.2</span>Blokir Terpasang & Aktif</div>
+          <div class="okpi"><span class="okpi-code">2.3</span>Blokir Adequacy s.d. Pensiun</div>
+          <div class="okpi"><span class="okpi-code">2.4</span>Rekap Tagihan On-Time (D-3)</div>
+          <div class="okpi"><span class="okpi-code">2.5</span>Pick-up On-Schedule (D+5)</div>
+          <div class="okpi"><span class="okpi-code">2.6</span>Rekonsiliasi Selisih ≤5%</div>
+          <div class="okpi"><span class="okpi-code">2.7</span>Debitur Aktif di Instansi</div>
+        </div>
+      </div>
+      <div class="ocat oc3">
+        <div class="ocat-hd"><div class="ocat-num">KATEGORI 3 · BOBOT</div><div class="ocat-name">Proteksi & Mitigasi</div><div class="ocat-wt">20%</div></div>
+        <div class="okpi-list">
+          <div class="okpi"><span class="okpi-code">3.1</span>Flagging Aktif Taspen/Asabri</div>
+          <div class="okpi"><span class="okpi-code">3.2</span>Flagging Jangka Waktu = Kredit</div>
+        </div>
+        <div class="ofoot">Memastikan setiap Nomor Pensiun ter-register di database flaging Taspen/Asabri sesuai jangka waktu kredit</div>
+      </div>
+      <div class="ocat oc4">
+        <div class="ocat-hd"><div class="ocat-num">KATEGORI 4 · BOBOT</div><div class="ocat-name">Handling Transisi</div><div class="ocat-wt">10%</div></div>
+        <div class="okpi-list">
+          <div class="okpi"><span class="okpi-code">4.1</span>Identifikasi Debitur Mendekati Pensiun (6 bln sebelum MPP)</div>
+          <div class="okpi"><span class="okpi-code">4.2</span>Identifikasi Nomor Pensiun Baru</div>
+          <div class="okpi"><span class="okpi-code">4.3</span>Update Produk Hybrid → Kupen Umum</div>
+        </div>
+        <div class="ofoot">Manajemen aktif debitur mendekati pensiun agar transisi produk berjalan lancar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S7b: CARA MENGHITUNG SKOR D ── -->
+<div class="slide" id="s7b">
+  <div class="si">
+    <div class="stag">05b — KPI Operasional · Penghitungan</div>
+    <h2 class="stitle">Bagaimana Skor D Dihitung?</h2>
+    <div class="gline"></div>
+    <div class="calc-wrap">
+      <div class="calc-left">
+        <div>
+          <div class="calc-section-title">Formula Skor D (Rata-rata Tertimbang)</div>
+          <div class="formula-big">
+Skor D = <span class="hl">(Kat.1 × 40%)</span> + <span class="hl">(Kat.2 × 30%)</span>
+       + <span class="hl">(Kat.3 × 20%)</span> + <span class="hl">(Kat.4 × 10%)</span>
+
+<span class="cm">Skor tiap KPI = (Jumlah terpenuhi ÷ Total loan) × 100</span>
+<span class="cm">Skor Kategori = rata-rata skor sub-KPI dalam kategori tsb</span>
+          </div>
+        </div>
+        <div>
+          <div class="calc-section-title">Bobot Tiap Kategori</div>
+          <div class="cat-weight-row">
+            <div class="cwr-item"><div class="cwr-cat">Kat. 1 — Kepastian Sumber Pembayaran</div><div class="cwr-bar-bg"><div class="cwr-bar-fill" style="width:100%;background:linear-gradient(90deg,#6A9FD8,#3A7ABD);"></div></div><div class="cwr-wt">40%</div></div>
+            <div class="cwr-item"><div class="cwr-cat">Kat. 2 — Mekanisme Pembayaran</div><div class="cwr-bar-bg"><div class="cwr-bar-fill" style="width:75%;background:linear-gradient(90deg,#6AD89F,#2A9A5A);"></div></div><div class="cwr-wt">30%</div></div>
+            <div class="cwr-item"><div class="cwr-cat">Kat. 3 — Proteksi & Mitigasi</div><div class="cwr-bar-bg"><div class="cwr-bar-fill" style="width:50%;background:linear-gradient(90deg,#D86A9F,#9A2A6A);"></div></div><div class="cwr-wt">20%</div></div>
+            <div class="cwr-item"><div class="cwr-cat">Kat. 4 — Handling Transisi</div><div class="cwr-bar-bg"><div class="cwr-bar-fill" style="width:25%;background:linear-gradient(90deg,#D8B86A,#B88A30);"></div></div><div class="cwr-wt">10%</div></div>
+          </div>
+        </div>
+        <div class="override-note"><strong>⚡ Override Rule:</strong> Jika Skor D &lt; 50% → RO <strong>otomatis masuk Red Zone</strong> meskipun total skor ≥ 80. Ini memastikan kualitas operasional tidak diabaikan demi mengejar angka produksi.</div>
+      </div>
+      <div class="calc-right">
+        <div class="example-box" style="flex:1;">
+          <div class="ex-title">📝 Contoh Penghitungan Skor D — Bulan Biasa</div>
+          <div class="ex-rows">
+            <div class="ex-row ex-hdr"><span>Kategori</span><span style="text-align:right;">Skor</span><span style="text-align:right;">Bobot</span><span style="text-align:right;">Kontribusi</span></div>
+            <div class="ex-row ex-row-data"><span>Kepastian Sumber Pembayaran</span><span class="ex-val">85</span><span class="ex-wt">× 40%</span><span class="ex-contrib">= 34,0</span></div>
+            <div class="ex-row ex-row-data"><span>Mekanisme Pembayaran</span><span class="ex-val">72</span><span class="ex-wt">× 30%</span><span class="ex-contrib">= 21,6</span></div>
+            <div class="ex-row ex-row-data"><span>Proteksi & Mitigasi</span><span class="ex-val">90</span><span class="ex-wt">× 20%</span><span class="ex-contrib">= 18,0</span></div>
+            <div class="ex-row ex-row-data"><span>Handling Transisi</span><span class="ex-val">80</span><span class="ex-wt">× 10%</span><span class="ex-contrib">= 8,0</span></div>
+          </div>
+          <div class="ex-total">
+            <div class="ex-total-lbl">Skor D (Operasional)</div>
+            <div class="ex-total-score">81,6 → 🟢 Green</div>
+          </div>
+        </div>
+        <div class="example-box">
+          <div class="ex-title">📝 Contoh Override — Skor Total Tinggi Tapi D Rendah</div>
+          <div class="ex-rows">
+            <div class="ex-row ex-hdr"><span>Komponen</span><span style="text-align:right;">Skor</span><span style="text-align:right;">Bobot</span><span style="text-align:right;">Hasil</span></div>
+            <div class="ex-row ex-row-data"><span>Komponen A (Disburse)</span><span class="ex-val">95</span><span class="ex-wt">× 62,5%</span><span class="ex-contrib">= 59,4</span></div>
+            <div class="ex-row ex-row-data"><span>Komponen D (Ops)</span><span class="ex-val" style="color:#FF9999;">44</span><span class="ex-wt">× 37,5%</span><span class="ex-contrib" style="color:#FF9999;">= 16,5</span></div>
+          </div>
+          <div class="ex-total">
+            <div class="ex-total-lbl">Total = 75,9 tapi D &lt; 50%</div>
+            <div class="ex-total-score" style="color:#FF9999;">🔴 Red Zone!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S8: COACHING & SANKSI (REVISED) ── -->
+<div class="slide" id="s8">
+  <div class="si">
+    <div class="stag">06 — Coaching & Sanksi</div>
+    <h2 class="stitle">Mekanisme Eskalasi — RO, SPV & Unit Bisnis</h2>
+    <div class="gline"></div>
+    <div class="sanksi-wrap">
+      <!-- Coaching flow -->
+      <div class="sanksi-top">
+        <div class="sc sc-yellow" style="flex:1.1;">
+          <div class="sc-tag" style="color:var(--accent);">🟡 YELLOW ZONE</div>
+          <div class="sc-title">Coaching Terarah (Skor 60–79 atau Ops &lt;70%)</div>
+          <div class="sc-desc">SPV wajib coaching dalam <strong>7 hari kerja</strong>. Identifikasi hambatan & perbaiki strategi. Hasil diinput GForm ke HO.</div>
+          <div class="sc-trigger">⚡ Belum ada sanksi formal</div>
+        </div>
+        <div class="sc sc-red0" style="flex:1.1;">
+          <div class="sc-tag" style="color:#FF9999;">🔴 RED ZONE</div>
+          <div class="sc-title">Coaching Wajib + RTL Tertulis (Skor &lt;60 atau Ops &lt;50%)</div>
+          <div class="sc-desc">Coaching wajib disertai <strong>Rencana Tindak Lanjut Tertulis</strong>. SPV lapor ke HO dalam 3 hari kerja. HO beri kategori 🔴🟡🟢.</div>
+          <div class="sc-trigger">⚡ Red 2 bln berturut → ST-1</div>
+        </div>
+        <div class="sc sc-red1"><div class="sc-tag" style="color:#FFAA77;">ST 1–3</div><div class="sc-title">Surat Teguran</div><div class="sc-desc">Diterbitkan <strong>SDM Cabang</strong>, ditandatangani <strong>Regional Head</strong>. Ditembuskan ke Divisi Bisnis & HC.</div><div class="sc-trigger">⚡ Red 2 bln tanpa perbaikan</div></div>
+        <div class="sc sc-red2"><div class="sc-tag" style="color:#FF8855;">SP 1–3</div><div class="sc-title">Surat Peringatan</div><div class="sc-desc">Diterbitkan <strong>SDM Cabang</strong>, ditandatangani <strong>Regional Head</strong>, disahkan <strong>HC</strong>. SP-2 ke atas wajib <strong>Analisa Potensi Karyawan</strong>.</div><div class="sc-trigger">⚡ SP-2+: Rekomendasi mutasi/turun grade/mundur</div></div>
+        <div class="sc sc-red3"><div class="sc-tag" style="color:#FF2222;">SP-2 ke Atas</div><div class="sc-title">Analisa Potensi Karyawan</div><div class="sc-desc">SDM Cabang wajib susun analisa, TTD SPV & PC. Disampaikan ke Regional Head → Divisi Bisnis & HC untuk opini & rekomendasi.</div><div class="sc-trigger">⚡ Mencakup: kompetensi, potensi, inisiatif, rekomendasi unit</div></div>
+      </div>
+      <!-- Cut-off notice -->
+      <div class="sanksi-cutoff">
+        <div style="display:flex;gap:clamp(10px,1.4vw,18px);flex-wrap:wrap;align-items:flex-start;">
+          <div style="flex:1;min-width:220px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">⏱ Cut-Off Skema Sanksi</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.82);line-height:1.6;"><strong style="color:var(--wp);">s.d. Februari 2026:</strong> Sanksi berjalan mengikuti mekanisme lama — tidak dihapus, tetap berlaku sesuai rekam jejak.<br><strong style="color:var(--wp);">Mulai Maret 2026:</strong> Skema baru diberlakukan tanpa menghapus sanksi yang sudah berjalan pada skema sebelumnya.<br><strong style="color:var(--wp);">Unit Bisnis</strong> wajib memastikan konsistensi data SDM — RO yang sudah berada di level ST/SP tetap melanjutkan sesuai rekam jejak sanksinya.</div>
+          </div>
+          <div style="flex:1;min-width:220px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">📋 Tata Kelola Penerbitan Sanksi</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.82);line-height:1.55;padding:5px 8px 5px 10px;border-left:2px solid rgba(255,170,100,.4);"><strong style="color:#FFAA77;">ST 1–3:</strong> Diterbitkan SDM Cabang · TTD Regional Head · Tembusan Divisi Bisnis & HC</div>
+              <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.82);line-height:1.55;padding:5px 8px 5px 10px;border-left:2px solid rgba(255,80,80,.4);"><strong style="color:#FF9999;">SP 1–3:</strong> Diterbitkan SDM Cabang · TTD Regional Head · Disahkan HC</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SPV + Unit -->
+      <div class="sanksi-bottom">
+        <div class="sc-spv">
+          <div class="spanel-title">🔷 Akuntabilitas SPV (Supervisor RO)</div>
+          <div class="spanel-body">SPV dikenai sanksi berdasarkan <strong>performa unit secara keseluruhan</strong>, bukan kasus individual RO. Coaching berlaku langsung sejak trigger terpenuhi.</div>
+          <div class="stlist">
+            <div class="stitem"><strong>Coaching Awal:</strong> ≥50% RO dalam unit masuk Red Zone dalam 1 bulan → SPV terima coaching dari atasan + action plan tertulis. Trigger bersifat ATAU — salah satu sudah cukup.</div>
+            <div class="stitem"><strong>ST 1–3:</strong> Kondisi berlanjut 2 bulan berturut-turut → SDM Cabang, TTD Regional Head, diketahui Divisi Bisnis & HC</div>
+            <div class="stitem"><strong>SP 1–3:</strong> Eskalasi dari ST-3 → TTD Regional Head + pengesahan HC. SP-2 ke atas wajib Analisa Potensi Karyawan.</div>
+          </div>
+        </div>
+        <div class="sc-unit">
+          <div class="spanel-title">🔶 Akuntabilitas Unit Bisnis — Pengurangan Poin</div>
+          <div class="spanel-body">Mekanisme pengurangan poin bersifat <strong>otomatis</strong>, independen dari sanksi formal SPV — tidak perlu pengesahan terpisah.</div>
+          <div class="stlist">
+            <div class="stitem"><strong>Trigger:</strong> Akhir semester, rata-rata Skor D seluruh RO dalam unit &lt; 60%</div>
+            <div class="stitem"><strong>Konsekuensi:</strong> −5 poin otomatis dari skor KPI unit bisnis periode semester berjalan</div>
+            <div class="stitem"><strong>Tanggung jawab kolektif:</strong> RO, SPV, dan staf operasional unit memiliki kepentingan bersama menjaga Skor D di atas threshold</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S9: DATABASE REFERENSI (REVISED) ── -->
+<div class="slide" id="s9">
+  <div class="si">
+    <div class="stag">06b — Database Referensi Operasional</div>
+    <h2 class="stitle">Data Pendukung Validasi KPI Operasional</h2>
+    <div class="gline"></div>
+    <!-- REVISED: Added intro paragraph -->
+    <div class="db-intro">
+      Selain data dari <strong>core banking</strong> dan mitra (<strong>Taspen/Asabri</strong>), terdapat tiga database olahan yang menjadi referensi penting dalam sistem KPI Operasional. Database ini disusun di level <strong>RO</strong> dan diproses secara berjenjang melalui <strong>SPV → Regional → HO</strong>, di mana MIS Data melakukan verifikasi di level HO.
+    </div>
+    <div class="db-grid">
+      <div class="dbc dbc-1">
+        <div class="db-num">1</div>
+        <div class="db-icon">🔗</div>
+        <div class="db-title">Database Nomor Pensiun per Loan</div>
+        <div class="db-desc">Pencocokan manual Nomor Loan (core banking) dengan Nomor Pensiun (Taspen/Asabri). Menjadi akar validasi untuk mayoritas KPI Operasional — ketidakakuratan di sini berdampak ke banyak KPI sekaligus.</div>
+        <div class="db-tags"><div class="db-tag-lbl">Digunakan di:</div><span class="dbtag">KPI 1.1</span><span class="dbtag">KPI 1.3</span><span class="dbtag">KPI 1.4</span><span class="dbtag">KPI 2.1</span><span class="dbtag">KPI 3.1</span><span class="dbtag">KPI 3.2</span></div>
+      </div>
+      <div class="dbc dbc-2">
+        <div class="db-num">2</div>
+        <div class="db-icon">📅</div>
+        <div class="db-title">Database Usia Pensiun per Produk</div>
+        <div class="db-desc">Data usia pensiun untuk produk Hybrid PKS, Non PKS, dan GP. Belum sepenuhnya tersedia di core banking — wajib dibangun manual oleh RO karena berdampak langsung ke perhitungan blokir dan transisi produk.</div>
+        <div class="db-tags"><div class="db-tag-lbl">Digunakan di:</div><span class="dbtag">KPI 2.2</span><span class="dbtag">KPI 2.3</span><span class="dbtag">KPI 4.1</span><span class="dbtag">KPI 4.2</span><span class="dbtag">KPI 4.3</span></div>
+      </div>
+      <div class="dbc dbc-3">
+        <div class="db-num">3</div>
+        <div class="db-icon">💳</div>
+        <div class="db-title">Database Pola Pembayaran Kupeg & Hybrid PKS</div>
+        <div class="db-desc">Pemetaan pola pembayaran per loan: Pola A (potong bendahara), Pola B (setor sendiri), Pola C (titipan via bendahara). Wajib dilampirkan tiap bulan agar rekonsiliasi dapat divalidasi.</div>
+        <div class="db-tags"><div class="db-tag-lbl">Digunakan di:</div><span class="dbtag">KPI 1.5</span><span class="dbtag">Rekonsiliasi 2.6</span></div>
+      </div>
+    </div>
+    <div class="db-flow">
+      <div class="db-flow-title">🔄 ALUR VALIDASI DATABASE — BERJENJANG</div>
+      <div class="db-flow-steps">
+        <div class="db-fstep">RO<br><span style="font-size:9px;color:var(--grey);">Buat & update</span></div>
+        <div class="db-farrow">→</div>
+        <div class="db-fstep">SPV<br><span style="font-size:9px;color:var(--grey);">Verifikasi</span></div>
+        <div class="db-farrow">→</div>
+        <div class="db-fstep">Regional<br><span style="font-size:9px;color:var(--grey);">Konsolidasi</span></div>
+        <div class="db-farrow">→</div>
+        <div class="db-fstep">HO<br><span style="font-size:9px;color:var(--grey);">Validasi silang</span></div>
+        <div class="db-farrow">→</div>
+        <div class="db-fstep" style="border-color:var(--accent);background:rgba(200,146,42,.1);">MIS Data<br><span style="font-size:9px;color:var(--accent);">Final verify</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S10: STAKEHOLDER (FULLY REVISED per Jobdesk) ── -->
+<div class="slide" id="s10">
+  <div class="si">
+    <div class="stag">07 — Peran Stakeholder</div>
+    <h2 class="stitle">Sistem Pelaporan Berlapis — 4 Level Unit Bisnis</h2>
+    <div class="gline"></div>
+    <!-- flow arrow bar -->
+    <div style="display:flex;align-items:center;gap:0;margin-bottom:clamp(8px,1.2vh,14px);flex-shrink:0;">
+      <div style="background:rgba(200,146,42,.12);border:1px solid rgba(200,146,42,.3);border-radius:6px;padding:6px 14px;font-size:11px;font-weight:600;color:var(--accent-light);">RO</div>
+      <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(200,146,42,.4),rgba(200,146,42,.2));"></div>
+      <div style="background:rgba(200,146,42,.12);border:1px solid rgba(200,146,42,.3);border-radius:6px;padding:6px 14px;font-size:11px;font-weight:600;color:var(--accent-light);">SPV</div>
+      <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(200,146,42,.3),rgba(200,146,42,.15));"></div>
+      <div style="background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.25);border-radius:6px;padding:6px 14px;font-size:11px;font-weight:600;color:var(--accent-light);">Pimpinan Cabang</div>
+      <div style="flex:1;height:2px;background:linear-gradient(90deg,rgba(200,146,42,.2),rgba(200,146,42,.35));"></div>
+      <div style="background:rgba(200,146,42,.18);border:1px solid rgba(200,146,42,.5);border-radius:6px;padding:6px 14px;font-size:11px;font-weight:700;color:#FFD700;">Regional ⭐</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(7px,1vw,12px);flex:1;min-height:0;">
+
+      <!-- RO -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(26,74,140,.25);border-bottom:1px solid var(--border);padding:clamp(8px,1.1vh,14px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">LEVEL 1 — PELAKSANA</div>
+          <div style="font-size:20px;margin-bottom:3px;">🧑💼</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(14px,1.3vw,17px);color:var(--wp);line-height:1.2;">Relationship Officer</div>
+          <div style="font-size:10px;color:var(--accent);margin-top:2px;font-weight:500;">Satu-satunya pengolah data operasional</div>
+        </div>
+        <div style="padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);display:flex;flex-direction:column;gap:clamp(4px,.6vh,7px);flex:1;overflow:hidden;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;flex-shrink:0;">Tanggung Jawab</div>
+          <div style="display:flex;flex-direction:column;gap:clamp(3px,.5vh,5px);flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(26,74,140,.7);background:rgba(26,74,140,.08);border-radius:0 4px 4px 0;">Identifikasi loan bermasalah per <strong>18 sub-KPI</strong> setiap bulan secara teliti — berdasarkan data aktual, bukan estimasi</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(26,74,140,.7);background:rgba(26,74,140,.08);border-radius:0 4px 4px 0;">Hitung jumlah bermasalah & total yang dipantau per KPI dengan akurat</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(26,74,140,.7);background:rgba(26,74,140,.08);border-radius:0 4px 4px 0;">Tarik data absolut langsung dari sistem (core banking / Taspen / Asabri) — bukan rekap manual</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(26,74,140,.7);background:rgba(26,74,140,.08);border-radius:0 4px 4px 0;">Isi template laporan sesuai format & submit ke SPV. Siap dikonfirmasi atau diklarifikasi atas temuan yang dilaporkan</div>
+          </div>
+          <div style="padding:5px 7px;background:rgba(184,50,50,.09);border:1px solid rgba(184,50,50,.25);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Dilarang mengubah angka setelah SPV konfirmasi tanpa pemberitahuan resmi</div>
+          <div style="padding-top:7px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0;">📅 Submit ke SPV: Tgl 15 bulan berikutnya</div>
+        </div>
+      </div>
+
+      <!-- SPV -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(42,90,60,.25);border-bottom:1px solid var(--border);padding:clamp(8px,1.1vh,14px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">LEVEL 2 — VERIFIKATOR 1</div>
+          <div style="font-size:20px;margin-bottom:3px;">👨💼</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(14px,1.3vw,17px);color:var(--wp);line-height:1.2;">Supervisor RO</div>
+          <div style="font-size:10px;color:var(--accent);margin-top:2px;font-weight:500;">Konfirmasi validitas — bukan buat ulang data</div>
+        </div>
+        <div style="padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);display:flex;flex-direction:column;gap:clamp(4px,.6vh,7px);flex:1;overflow:hidden;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;flex-shrink:0;">Tanggung Jawab</div>
+          <div style="display:flex;flex-direction:column;gap:clamp(3px,.5vh,5px);flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(42,90,60,.8);background:rgba(42,90,60,.1);border-radius:0 4px 4px 0;">Terima & periksa kelengkapan laporan semua RO. Konfirmasi validitas temuan — apakah kasus yang dilaporkan memang bermasalah?</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(42,90,60,.8);background:rgba(42,90,60,.1);border-radius:0 4px 4px 0;">Pastikan angka absolut (total loan, debitur) sesuai sistem. Jika ada keliru → kembalikan ke RO untuk koreksi, <strong>jangan buat angka versi sendiri</strong></div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(42,90,60,.8);background:rgba(42,90,60,.1);border-radius:0 4px 4px 0;">Isi template SPV Unit: rekap produksi, konfirmasi temuan operasional, scorecard per RO, distribusi zona Green/Yellow/Red</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(42,90,60,.8);background:rgba(42,90,60,.1);border-radius:0 4px 4px 0;">Coaching Yellow dalam <strong>7 hari kerja</strong>; coaching Red wajib + RTL tertulis. Input hasil coaching ke GForm HO dalam 3 hari kerja</div>
+          </div>
+          <div style="padding:5px 7px;background:rgba(184,50,50,.09);border:1px solid rgba(184,50,50,.25);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Dilarang meneruskan laporan yang belum sepenuhnya diverifikasi validitasnya</div>
+          <div style="padding-top:7px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0;">📅 Submit ke Regional: Tgl 20 bulan berikutnya</div>
+        </div>
+      </div>
+
+      <!-- PC -->
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(80,60,20,.3);border-bottom:1px solid var(--border);padding:clamp(8px,1.1vh,14px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">LEVEL 3 — PENANGGUNG JAWAB AREA</div>
+          <div style="font-size:20px;margin-bottom:3px;">🏢</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(14px,1.3vw,17px);color:var(--wp);line-height:1.2;">Pimpinan Cabang</div>
+          <div style="font-size:10px;color:var(--accent);margin-top:2px;font-weight:500;">Konsolidasi area KC & seluruh KCP</div>
+        </div>
+        <div style="padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);display:flex;flex-direction:column;gap:clamp(4px,.6vh,7px);flex:1;overflow:hidden;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;flex-shrink:0;">Tanggung Jawab</div>
+          <div style="display:flex;flex-direction:column;gap:clamp(3px,.5vh,5px);flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(180,140,40,.6);background:rgba(180,140,40,.07);border-radius:0 4px 4px 0;">Mengetahui dan <strong>menyetujui laporan</strong> dari seluruh unit dalam area. Bertanggung jawab atas kualitas keseluruhan laporan area yang dikirim ke Regional</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(180,140,40,.6);background:rgba(180,140,40,.07);border-radius:0 4px 4px 0;">Pastikan tidak ada laporan unit yang tertinggal sebelum dikirim ke Regional. Berwenang menahan pengiriman jika ada unit belum lengkap</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(180,140,40,.6);background:rgba(180,140,40,.07);border-radius:0 4px 4px 0;"><strong>Tandatangani laporan konsolidasi area</strong> sebagai bukti persetujuan substantif sebelum dikirim ke Regional</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(180,140,40,.6);background:rgba(180,140,40,.07);border-radius:0 4px 4px 0;">Dibantu Kabag Kredit dalam konsolidasi laporan dari KC dan seluruh KCP dalam area</div>
+          </div>
+          <div style="padding:5px 7px;background:rgba(184,50,50,.09);border:1px solid rgba(184,50,50,.25);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Dilarang mengubah angka yang sudah dikonfirmasi SPV tanpa alasan terdokumentasi</div>
+          <div style="padding-top:7px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0;">📅 Kirim ke Regional: Tgl 20 bulan berikutnya</div>
+        </div>
+      </div>
+
+      <!-- REGIONAL -->
+      <div style="background:var(--card);border:1px solid rgba(200,146,42,.35);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(60,30,100,.3);border-bottom:1px solid rgba(200,146,42,.25);padding:clamp(8px,1.1vh,14px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">LEVEL 4 — VERIFIKATOR 2 & PENGESAH</div>
+          <div style="font-size:20px;margin-bottom:3px;">🗺️</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(14px,1.3vw,17px);color:var(--wp);line-height:1.2;">Manager & Regional Head</div>
+          <div style="font-size:10px;color:var(--accent);margin-top:2px;font-weight:500;">Filter kontrol kedua — bukan pembuat data baru</div>
+        </div>
+        <div style="padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);display:flex;flex-direction:column;gap:clamp(4px,.6vh,7px);flex:1;overflow:hidden;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;flex-shrink:0;">Tanggung Jawab</div>
+          <div style="display:flex;flex-direction:column;gap:clamp(3px,.5vh,5px);flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(100,60,180,.6);background:rgba(80,40,140,.1);border-radius:0 4px 4px 0;"><strong>Manajer Regional:</strong> Cross-check data absolut, sampling validitas temuan untuk unit merah/kuning. Isi checklist validasi sebelum diserahkan ke Regional Head.</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(100,60,180,.6);background:rgba(80,40,140,.1);border-radius:0 4px 4px 0;">Rekap dua angka per KPI dari seluruh unit (jumlah bermasalah & total dipantau) — dijumlahkan sederhana, tidak diolah ulang</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(100,60,180,.6);background:rgba(80,40,140,.1);border-radius:0 4px 4px 0;"><strong>Regional Head:</strong> Baca isi laporan, pastikan Manager Regional sudah selesaikan checklist. <strong>Tanda tangan = pernyataan persetujuan substantif</strong> — bukan formalitas</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.45;padding:5px 7px 5px 9px;border-left:2px solid rgba(100,60,180,.6);background:rgba(80,40,140,.1);border-radius:0 4px 4px 0;">Ambil keputusan eskalasi untuk unit yang memerlukan tindakan segera (banyak RO Override). Tanda tangani sanksi ST–SP untuk RO & SPV dalam region</div>
+          </div>
+          <div style="padding:5px 7px;background:rgba(184,50,50,.09);border:1px solid rgba(184,50,50,.25);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Dilarang membuat angka alternatif atas temuan operasional yang berbeda dari laporan unit</div>
+          <div style="padding-top:7px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0;">📅 Submit ke HO: Tgl 25 bulan berikutnya</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S11: HO OVERVIEW + DEPT BISNIS PENSIUN (4 unit) ── -->
+<div class="slide" id="s11">
+  <div class="si">
+    <div class="stag">07b — Head Office · Dept Bisnis Pensiun</div>
+    <h2 class="stitle">HO — 8 Unit, Tidak Tumpang Tindih</h2>
+    <div class="gline"></div>
+    <!-- HO Principle bar -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:clamp(8px,1.1vh,12px);flex-shrink:0;">
+      <div style="padding:8px 12px;background:rgba(200,146,42,.08);border:1px solid rgba(200,146,42,.28);border-radius:6px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:16px;">🔀</span>
+        <div><div style="font-size:11px;font-weight:600;color:var(--wp);">Validasi Silang Antar Regional</div><div style="font-size:10px;color:var(--grey);">Bukan mengulang verifikasi yang sudah dilakukan di bawah</div></div>
+      </div>
+      <div style="padding:8px 12px;background:rgba(200,146,42,.08);border:1px solid rgba(200,146,42,.28);border-radius:6px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:16px;">🧩</span>
+        <div><div style="font-size:11px;font-weight:600;color:var(--wp);">8 Unit — Domain Berbeda</div><div style="font-size:10px;color:var(--grey);">Setiap unit hanya bertanggung jawab atas domain kontrolnya masing-masing</div></div>
+      </div>
+      <div style="padding:8px 12px;background:rgba(200,146,42,.08);border:1px solid rgba(200,146,42,.28);border-radius:6px;display:flex;align-items:center;gap:8px;">
+        <span style="font-size:16px;">⭐</span>
+        <div><div style="font-size:11px;font-weight:600;color:var(--wp);">R&D Product = Koordinator Akhir</div><div style="font-size:10px;color:var(--grey);">Kompilasi semua output unit HO → laporan konsolidasi nasional</div></div>
+      </div>
+    </div>
+    <!-- Section label -->
+    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin-bottom:8px;flex-shrink:0;">A — DIVISI BISNIS PENSIUN (4 Unit)</div>
+    <!-- 4 units grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.1vw,12px);flex:1;min-height:0;">
+
+      <!-- 4.1 Branch Support -->
+      <div style="background:var(--card);border:1px solid rgba(138,154,178,.3);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(50,70,100,.3);border-bottom:1px solid rgba(138,154,178,.25);padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">4.1 — DEPT BISNIS PENSIUN</div>
+          <div style="font-size:20px;margin-bottom:3px;">🛎️</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(13px,1.2vw,16px);color:var(--wp);line-height:1.2;">Unit Branch Support</div>
+          <div style="font-size:10px;color:#A0B8D8;margin-top:2px;font-weight:500;">Level: Support — HO</div>
+        </div>
+        <div style="padding:clamp(7px,1vh,10px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;flex:1;overflow:hidden;">
+          <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.9);line-height:1.5;padding:6px 9px;background:rgba(50,70,100,.15);border-radius:5px;border-left:2px solid #A0B8D8;"><strong style="color:var(--wp);">Helpdesk & support operasional</strong> untuk unit bisnis — garda pertama ketika ada kendala pengisian laporan atau operasional program</div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#A0B8D8;flex-shrink:0;">▸</span>Helpdesk pertama untuk kendala pengisian template laporan KPI RO</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#A0B8D8;flex-shrink:0;">▸</span>Tangani masalah teknis program produk pensiunan yang berdampak pada pelaporan</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#A0B8D8;flex-shrink:0;">▸</span>Komunikasikan perubahan format / prosedur pelaporan ke seluruh unit bisnis</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#A0B8D8;flex-shrink:0;">▸</span>Dokumentasikan pertanyaan & kendala berulang → bahan perbaikan sistem</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#A0B8D8;flex-shrink:0;">▸</span>Koordinasikan ke R&D Product jika ada kendala yang bersifat sistemik</div>
+          </div>
+          <div style="padding:5px 7px;background:rgba(184,50,50,.09);border:1px solid rgba(184,50,50,.25);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Tidak berwenang mengubah angka laporan atau memberi keputusan final validitas data</div>
+        </div>
+      </div>
+
+      <!-- 4.2 R&D Product -->
+      <div style="background:var(--card);border:1px solid rgba(200,146,42,.55);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-light));"></div>
+        <div style="background:rgba(100,60,10,.35);border-bottom:1px solid rgba(200,146,42,.35);padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);margin-top:3px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">4.2 — DEPT BISNIS PENSIUN </div>
+          <div style="font-size:20px;margin-bottom:3px;">⭐</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(13px,1.2vw,16px);color:var(--wp);line-height:1.2;">Unit R&D Product</div>
+          <div style="font-size:10px;color:var(--accent-light);margin-top:2px;font-weight:500;">Penanggung Jawab Akhir</div>
+        </div>
+        <div style="padding:clamp(7px,1vh,10px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;flex:1;overflow:hidden;">
+          <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.9);line-height:1.5;padding:6px 9px;background:rgba(200,146,42,.08);border-radius:5px;border-left:2px solid var(--accent);"><strong style="color:var(--wp);">Decision maker program KPI RO</strong> — terima & kompilasi seluruh output validasi dari semua unit HO, hasilkan laporan konsolidasi nasional</div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:var(--accent);flex-shrink:0;">▸</span>Terima laporan dari 4 Regional yang sudah ditandatangani Regional Head</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:var(--accent);flex-shrink:0;">▸</span>Kompilasi output validasi MIS, Loan Review, Loan Monitoring, Kemitraan → satu laporan konsolidasi nasional</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:var(--accent);flex-shrink:0;">▸</span>Final check: angka nasional masuk akal? Ada inkonsistensi antar Regional?</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:var(--accent);flex-shrink:0;">▸</span>Susun evaluasi nasional: distribusi zona RO, tren KPI, Regional butuh perhatian khusus</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:var(--accent);flex-shrink:0;">▸</span>Decision maker perubahan desain KPI, threshold, atau mekanisme scoring → sampaikan ke pimpinan divisi</div>
+          </div>
+          <div style="padding:5px 7px;background:rgba(184,50,50,.09);border:1px solid rgba(184,50,50,.25);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Tidak boleh proses laporan Regional yang belum TTD Regional Head atau kompilasi sebelum semua unit HO selesai</div>
+          <div style="padding-top:6px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--accent);flex-shrink:0;">📅 Laporan nasional selesai: Tgl 5 bulan kedua berikutnya</div>
+        </div>
+      </div>
+
+      <!-- 4.3 Kemitraan Pensiun -->
+      <div style="background:var(--card);border:1px solid rgba(60,160,100,.3);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(42,90,60,.28);border-bottom:1px solid rgba(60,160,100,.2);padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">4.3 — DEPT BISNIS PENSIUN</div>
+          <div style="font-size:20px;margin-bottom:3px;">🤝</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(13px,1.2vw,16px);color:var(--wp);line-height:1.2;">Unit Kemitraan</div>
+          <div style="font-size:10px;color:#6AD89F;margin-top:2px;font-weight:500;">Validator Domain: Taspen / Asabri</div>
+        </div>
+        <div style="padding:clamp(7px,1vh,10px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;flex:1;overflow:hidden;">
+          <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.9);line-height:1.5;padding:6px 9px;background:rgba(42,90,60,.15);border-radius:5px;border-left:2px solid #6AD89F;"><strong style="color:var(--wp);">Validator data mitra pensiunan</strong> — memastikan data DAPEM & flagging yang dilaporkan unit bisnis konsisten dengan data resmi Taspen/Asabri</div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#6AD89F;flex-shrink:0;">▸</span>Tarik data DAPEM (gaji pensiun masuk) & flagging aktif dari Taspen/Asabri tiap periode laporan</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#6AD89F;flex-shrink:0;">▸</span>Bandingkan angka nasional dari laporan Regional via R&D Product dengan data mentah mitra</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#6AD89F;flex-shrink:0;">▸</span>Identifikasi mismatch: gaji masuk vs DAPEM, flagging aktif vs database mitra</div>
+          </div>
+          <div style="padding:4px 6px;background:rgba(42,122,74,.1);border:1px solid rgba(42,122,74,.25);border-radius:4px;font-size:9px;color:#6AD89F;flex-shrink:0;">Domain: KPI 1.3 (Gaji Masuk) · KPI 3.1 (Flagging Aktif) · KPI 3.2 (Flagging Maturity)</div>
+        </div>
+      </div>
+
+      <!-- Placeholder untuk 4.7 Dept Product Kredit Pegawai (Divisi Consumer) - teaser -->
+      <div style="background:rgba(255,255,255,.03);border:1px dashed rgba(200,146,42,.3);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;">
+        <div style="font-size:28px;">➡️</div>
+        <div style="text-align:center;">
+          <div style="font-family:'DM Serif Display',serif;font-size:15px;color:rgba(245,240,232,.5);line-height:1.4;">4 Unit Lainnya</div>
+          <div style="font-size:10px;color:var(--grey);margin-top:4px;">Dept Credit Support &<br>Divisi Consumer</div>
+          <div style="font-size:10px;color:var(--accent);margin-top:6px;">→ Lihat slide berikutnya</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── S11b: HO — DEPT CREDIT SUPPORT + DIVISI CONSUMER (4 unit) ── -->
+<div class="slide" id="s11b">
+  <div class="si">
+    <div class="stag">07c — Head Office · Credit Support & Consumer</div>
+    <h2 class="stitle">HO — Dept Credit Support & Divisi Consumer</h2>
+    <div class="gline"></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.1vw,12px);flex:1;min-height:0;margin-top:clamp(4px,.7vh,10px);">
+
+      <!-- 4.4 Loan Monitoring -->
+      <div style="background:var(--card);border:1px solid rgba(160,100,220,.3);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(80,30,130,.28);border-bottom:1px solid rgba(160,100,220,.2);padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">4.4 — DEPT CREDIT SUPPORT</div>
+          <div style="font-size:20px;margin-bottom:3px;">🏭</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(13px,1.2vw,16px);color:var(--wp);line-height:1.2;">Unit Loan Monitoring</div>
+          <div style="font-size:10px;color:#C49AD8;margin-top:2px;font-weight:500;">Validator Lapangan / Sistem Instansi — HO & Area</div>
+        </div>
+        <div style="padding:clamp(7px,1vh,10px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;flex:1;overflow:hidden;">
+          <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.9);line-height:1.5;padding:6px 9px;background:rgba(80,30,130,.12);border-radius:5px;border-left:2px solid #C49AD8;"><strong style="color:var(--wp);">Validator lapangan sistem instansi</strong> — miliki tim di setiap Area untuk sample checking langsung ke instansi: tagihan terkirim tepat waktu? Pembayaran bendahara masuk?</div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#C49AD8;flex-shrink:0;">▸</span>Sample checking ke instansi aktif: apakah rekap tagihan dikirim sebelum akhir bulan?</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#C49AD8;flex-shrink:0;">▸</span>Validasi apakah bendahara instansi melakukan pembayaran sesuai jadwal</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#C49AD8;flex-shrink:0;">▸</span>Bandingkan temuan lapangan dengan laporan RO/SPV dalam KPI terkait sistem instansi</div>
+          </div>
+          <div style="padding:4px 6px;background:rgba(80,30,130,.12);border:1px solid rgba(160,100,220,.25);border-radius:4px;font-size:9px;color:#C49AD8;flex-shrink:0;">Domain: KPI 2.4 (Rekap On-Time) · 2.5 (Pick-up) · 2.6 (Rekon) · 2.7 (Debitur Aktif)</div>
+          <div style="padding:4px 6px;background:rgba(184,50,50,.07);border:1px solid rgba(184,50,50,.22);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Tidak boleh ubah angka laporan RO tanpa prosedur koreksi · Laporan tidak terkoordinasi</div>
+        </div>
+      </div>
+
+      <!-- 4.5 Loan Review -->
+      <div style="background:var(--card);border:1px solid rgba(200,100,100,.3);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;">
+        <div style="background:rgba(120,30,30,.28);border-bottom:1px solid rgba(200,100,100,.2);padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">4.5 — DEPT CREDIT SUPPORT</div>
+          <div style="font-size:20px;margin-bottom:3px;">🔍</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(13px,1.2vw,16px);color:var(--wp);line-height:1.2;">Unit Loan Review</div>
+          <div style="font-size:10px;color:#D89898;margin-top:2px;font-weight:500;">Validator Pembayaran & Angsuran — HO</div>
+        </div>
+        <div style="padding:clamp(7px,1vh,10px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;flex:1;overflow:hidden;">
+          <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.9);line-height:1.5;padding:6px 9px;background:rgba(120,30,30,.15);border-radius:5px;border-left:2px solid #D89898;"><strong style="color:var(--wp);">Validator pembayaran debitur</strong> — memastikan angsuran seluruh debitur masuk setiap bulan via pengecekan langsung ke core banking sebagai cross-check data</div>
+          <div style="display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#D89898;flex-shrink:0;">▸</span>Sampling debitur untuk pastikan angsuran masuk setiap bulan</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#D89898;flex-shrink:0;">▸</span>Pengecekan langsung ke core banking untuk validasi pembayaran & penurunan gaji</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#D89898;flex-shrink:0;">▸</span>Bandingkan hasil pengecekan dengan data absolut yang dilaporkan Regional</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#D89898;flex-shrink:0;">▸</span>Identifikasi debitur angsurannya bermasalah</div>
+          </div>
+          <div style="padding:4px 6px;background:rgba(120,30,30,.12);border:1px solid rgba(200,100,100,.25);border-radius:4px;font-size:9px;color:#D89898;flex-shrink:0;">Domain: KPI 1.3 (Gaji Masuk) · KPI 1.4 (Gaji Turun >10%) · Total Debitur Gaji Masuk</div>
+          <div style="padding:4px 6px;background:rgba(184,50,50,.07);border:1px solid rgba(184,50,50,.22);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Tidak boleh sampaikan validasi langsung ke Regional · Tidak putuskan status debitur sendiri</div>
+        </div>
+      </div>
+
+      <!-- 4.6 MIS Data -->
+      <div style="background:var(--card);border:1px solid rgba(100,160,220,.35);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;position:relative;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#6A9FD8,#3A7ABD);"></div>
+        <div style="background:rgba(26,74,140,.28);border-bottom:1px solid rgba(100,160,220,.2);padding:clamp(8px,1.1vh,12px) clamp(10px,1.2vw,14px);margin-top:2px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:3px;">4.6 — DEPT CREDIT SUPPORT · SINGLE SOURCE OF TRUTH</div>
+          <div style="font-size:20px;margin-bottom:3px;">📊</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:clamp(13px,1.2vw,16px);color:var(--wp);line-height:1.2;">Unit MIS Data</div>
+          <div style="font-size:10px;color:#6A9FD8;margin-top:2px;font-weight:500;">Pemilik Data Absolut — HO</div>
+        </div>
+        <div style="padding:clamp(7px,1vh,10px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:5px;flex:1;overflow:hidden;">
+          <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.9);line-height:1.5;padding:6px 9px;background:rgba(26,74,140,.15);border-radius:5px;border-left:2px solid #6A9FD8;"><strong style="color:var(--wp);">Otoritas tunggal data absolut core banking</strong> — semua angka cross-check di HO harus bersumber dari MIS Data. Jika ada perbedaan, MIS Data yang menjadi rujukan final.</div>
+          <div style="display:flex;flex-direction:column;gap:3px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#6A9FD8;flex-shrink:0;">▸</span>Sediakan data resmi: total loan aktif, debitur, nett disburse, instansi aktif — per Regional & nasional</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#6A9FD8;flex-shrink:0;">▸</span>Data breakdown per produk: Kupen, Kupen Janda, Hybrid PKS/Non-PKS, GP, Kupeg</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#6A9FD8;flex-shrink:0;">▸</span>Verifikasi database NoPen per Loan berdasarkan parameter validasi (Bab VI.1)</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.75);line-height:1.45;display:flex;gap:6px;"><span style="color:#6A9FD8;flex-shrink:0;">▸</span>Pastikan data final per tanggal cut-off disepakati·</div>
+          </div>
+          <div style="padding:4px 6px;background:rgba(184,50,50,.07);border:1px solid rgba(184,50,50,.22);border-radius:4px;font-size:9px;color:rgba(255,150,150,.85);flex-shrink:0;">❌ Tidak boleh sediakan data belum final tanpa catatan status · Data berbeda ke unit berbeda</div>
+        </div>
+      </div>
+
+      <!-- 4.7 + 4.8 Divisi Consumer (digabung) -->
+      <div style="display:flex;flex-direction:column;gap:clamp(7px,1vh,10px);min-height:0;">
+        <!-- 4.7 Product Kredit Pegawai -->
+        <div style="background:var(--card);border:1px solid rgba(200,160,60,.3);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;flex:1;">
+          <div style="background:rgba(100,70,10,.28);border-bottom:1px solid rgba(200,160,60,.2);padding:clamp(6px,.9vh,10px) clamp(10px,1.2vw,13px);">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:2px;">4.7 — DIVISI CONSUMER</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:clamp(12px,1.1vw,15px);color:var(--wp);line-height:1.2;">Dept Product Kredit Pegawai</div>
+            <div style="font-size:9px;color:#D8B86A;margin-top:1px;font-weight:500;">Support Produk — HO</div>
+          </div>
+          <div style="padding:clamp(6px,.9vh,9px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.5;padding:5px 8px;background:rgba(100,70,10,.12);border-radius:4px;border-left:2px solid #D8B86A;"><strong style="color:var(--wp);">Support operasional produk Kupeg</strong> — pastikan kendala teknis & kebijakan produk pegawai aktif tidak hambat pelaporan</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.72);line-height:1.4;display:flex;gap:5px;"><span style="color:#D8B86A;flex-shrink:0;">▸</span>Tangani kendala teknis & kebijakan produk Kupeg yang berdampak pada laporan KPI</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.72);line-height:1.4;display:flex;gap:5px;"><span style="color:#D8B86A;flex-shrink:0;">▸</span>Klarifikasi peraturan produk yang pengaruhi perhitungan KPI</div>
+            
+          </div>
+        </div>
+        <!-- 4.8 Kemitraan Kredit Pegawai -->
+        <div style="background:var(--card);border:1px solid rgba(100,200,160,.3);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;flex:1;">
+          <div style="background:rgba(20,80,60,.28);border-bottom:1px solid rgba(100,200,160,.2);padding:clamp(6px,.9vh,10px) clamp(10px,1.2vw,13px);">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--grey);margin-bottom:2px;">4.8 — DIVISI CONSUMER</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:clamp(12px,1.1vw,15px);color:var(--wp);line-height:1.2;">Dept Kemitraan Kredit Pegawai</div>
+            <div style="font-size:9px;color:#6AD8B8;margin-top:1px;font-weight:500;">Validator Instansi Pegawai Aktif — HO</div>
+          </div>
+          <div style="padding:clamp(6px,.9vh,9px) clamp(10px,1.2vw,13px);display:flex;flex-direction:column;gap:4px;flex:1;overflow:hidden;">
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.85);line-height:1.5;padding:5px 8px;background:rgba(20,80,60,.12);border-radius:4px;border-left:2px solid #6AD8B8;"><strong style="color:var(--wp);">Validator data instansi pegawai aktif</strong> — kesesuaian data kerja sama & payroll instansi yang jadi basis pelaporan KPI</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.72);line-height:1.4;display:flex;gap:5px;"><span style="color:#6AD8B8;flex-shrink:0;">▸</span>Pastikan data instansi aktif Kupeg/Hybrid PKS sudah benar dan terkini</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.72);line-height:1.4;display:flex;gap:5px;"><span style="color:#6AD8B8;flex-shrink:0;">▸</span>Identifikasi instansi tidak aktif yang masih muncul di laporan & keabsahan MOU</div>
+            <div style="font-size:clamp(10px,.82vw,11px);color:rgba(245,240,232,.72);line-height:1.4;display:flex;gap:5px;"><span style="color:#6AD8B8;flex-shrink:0;">▸</span>Validasi kesesuaian data RB instansi.</div>
+            <div style="font-size:9px;color:#6AD8B8;margin-top:2px;">Domain: KPI 2.4 · 2.5 (daftar instansi aktif) · KPI 2.7</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── S11c: MATRIKS AKUNTABILITAS HO ── -->
+<div class="slide" id="s11c">
+  <div class="si">
+    <div class="stag">07d — Head Office · Matriks Akuntabilitas</div>
+    <h2 class="stitle">Matriks RACI — Siapa Bertanggung Jawab Atas Apa?</h2>
+    <div class="gline"></div>
+    <!-- Legend -->
+    <div style="display:flex;gap:12px;margin-bottom:clamp(8px,1.1vh,12px);flex-shrink:0;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(245,240,232,.85);"><span style="width:22px;height:22px;background:rgba(200,146,42,.25);border:1px solid var(--accent);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</span>Bertanggung Jawab</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(245,240,232,.85);"><span style="width:22px;height:22px;background:rgba(26,74,140,.25);border:1px solid rgba(100,160,220,.4);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</span>Perlu Dikonsultasikan</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(245,240,232,.85);"><span style="width:22px;height:22px;background:rgba(42,90,60,.25);border:1px solid rgba(60,160,100,.4);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</span>Perlu Diinformasikan</div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(245,240,232,.85);"><span style="width:22px;height:22px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--grey);">—</span>Tidak Terlibat</div>
+    </div>
+    <!-- RACI Table -->
+    <div style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;">
+      <!-- Header -->
+      <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;flex-shrink:0;margin-bottom:2px;">
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);border-radius:5px 0 0 5px;padding:7px 10px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;">Fungsi</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">RO</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">SPV</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">PC</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">Mgr Reg.</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">Reg. Head</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">MIS</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">Loan Rev.</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">Loan Mon.</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">Kemitraan</div>
+        <div style="background:rgba(200,146,42,.18);border:1px solid var(--border);border-radius:0 5px 5px 0;padding:7px 4px;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--accent);text-align:center;display:flex;align-items:center;justify-content:center;">R&D Prod.</div>
+      </div>
+      <!-- Rows -->
+      <div style="display:flex;flex-direction:column;gap:2px;flex:1;overflow:hidden;">
+
+        <!-- Row helper macro via inline style repetition -->
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Identifikasi temuan operasional</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Pull data absolut dari sistem</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Konfirmasi validitas temuan RO</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Cross-check data absolut (Regional)</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Sediakan data absolut resmi (HO)</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Validasi pembayaran & angsuran</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Validasi sistem instansi (lapangan)</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:var(--card);border:1px solid var(--border);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.85);border-radius:4px 0 0 4px;">Validasi data mitra (Taspen/Asabri)</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(200,146,42,.12);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--accent-light);">R</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid var(--border);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:rgba(200,146,42,.06);border:1px solid rgba(200,146,42,.3);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.9);border-radius:4px 0 0 4px;font-weight:600;">Kompilasi nasional & evaluasi akhir</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:rgba(26,74,140,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6A9FD8;">C</div>
+          <div style="background:rgba(200,146,42,.2);border:1px solid rgba(200,146,42,.5);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--accent-light);">R</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:220px repeat(10,1fr);gap:2px;">
+          <div style="background:rgba(200,146,42,.06);border:1px solid rgba(200,146,42,.3);padding:6px 10px;font-size:clamp(10px,.85vw,11px);color:rgba(245,240,232,.9);border-radius:4px 0 0 4px;font-weight:600;">Evaluasi sistem KPI baru</div>
+          <div style="background:var(--card);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:var(--card);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--grey);">—</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(42,90,60,.1);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:#6AD89F;">I</div>
+          <div style="background:rgba(200,146,42,.2);border:1px solid rgba(200,146,42,.5);border-radius:0 4px 4px 0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--accent-light);">R</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S12: JADWAL IMPLEMENTASI ── -->
+<div class="slide" id="s12">
+  <div class="si">
+    <div class="stag">08 — Jadwal Implementasi</div>
+    <h2 class="stitle">Roadmap Bertahap 2026</h2>
+    <div class="gline"></div>
+    <div class="tw-grid">
+      <div class="tw-wrap">
+        <div class="tw-line"></div>
+        <div class="twitem"><div class="twdate">FEB 2026</div><div class="twdot"></div><div class="twcon"><div class="twphase">FASE 1 — Sosialisasi</div><div class="twtitle">Persiapan & Penetapan Level</div><div class="twdesc">Sosialisasi Juknis ke seluruh RO, SPV, PC, dan Regional. SPV & PC tetapkan level awal RO secara tertulis.</div><div class="twout"><span class="outtag">Juknis Final</span><span class="outtag">Level RO Ditetapkan</span></div></div></div>
+        <div class="twitem"><div class="twdate">MAR 2026</div><div class="twdot" style="background:#C8922A;"></div><div class="twcon"><div class="twphase">FASE 2 — Trial Run</div><div class="twtitle">Uji Coba Template Baru</div><div class="twdesc">RO mulai isi laporan KPI dengan template baru. Database referensi mulai dibangun. Sanksi belum berlaku formal.</div><div class="twout"><span class="outtag">Baseline Data</span><span class="outtag">Gap Teridentifikasi</span></div></div></div>
+        <div class="twitem"><div class="twdate">APR 2026</div><div class="twdot" style="background:#2A7A4A;"></div><div class="twcon"><div class="twphase">FASE 3 — Full Berlaku</div><div class="twtitle">Sistem KPI Aktif Penuh</div><div class="twdesc">Scorecard berlaku penuh. Sanksi mulai efektif. Siklus triwulan pertama B & C: April–Juni 2026.</div><div class="twout"><span class="outtag">KPI Report Bulanan</span><span class="outtag">Sanksi Aktif</span></div></div></div>
+        <div class="twitem"><div class="twdate">JUN 2026</div><div class="twdot" style="background:#1A4A8C;"></div><div class="twcon"><div class="twphase">EVALUASI PERTAMA</div><div class="twtitle">Komponen B & C Dievaluasi</div><div class="twdesc">Evaluasi pertama KPH dan KPKB untuk triwulan Apr–Jun 2026. MIS Data validasi database referensi.</div><div class="twout"><span class="outtag">Evaluasi Triwulan 1</span></div></div></div>
+      </div>
+      <div class="tw-right">
+        <div class="tw-section-title">Siklus Pelaporan</div>
+        <div class="siklus-table">
+          <div class="srow2 shdr"><div class="scell">Komponen</div><div class="scell">Frekuensi</div><div class="scell">Deadline</div></div>
+          <div class="srow2"><div class="scell" style="font-weight:600;">Komponen A</div><div class="scell">Bulanan</div><div class="scell">Tgl 5 bln berikutnya</div></div>
+          <div class="srow2"><div class="scell" style="font-weight:600;">Komponen B</div><div class="scell">Triwulanan</div><div class="scell">Tgl 5 bln ke-3</div></div>
+          <div class="srow2"><div class="scell" style="font-weight:600;">Komponen C</div><div class="scell">Triwulanan</div><div class="scell">Tgl 5 bln ke-3</div></div>
+          <div class="srow2"><div class="scell" style="font-weight:600;">Skor D (Ops)</div><div class="scell">Bulanan</div><div class="scell">Tgl 15 bln berikutnya</div></div>
+        </div>
+        <div class="tw-section-title" style="margin-top:8px;">Format Laporan KPI Operasional</div>
+        <div class="format-list">
+          <div class="fmt-item"><div class="fmt-icon">📈</div><div class="fmt-txt"><strong>Achievement Rate</strong>Persentase pencapaian terhadap target tiap sub-KPI</div></div>
+          <div class="fmt-item"><div class="fmt-icon">🔢</div><div class="fmt-txt"><strong>Data Kuantitatif</strong>Jumlah loan, debitur, yang terpenuhi & yang belum</div></div>
+          <div class="fmt-item"><div class="fmt-icon">🔍</div><div class="fmt-txt"><strong>Root Cause & Action Plan</strong>Untuk setiap item yang tidak tercapai, dengan timeline</div></div>
+          <div class="fmt-item"><div class="fmt-icon">📎</div><div class="fmt-txt"><strong>Lampiran Laporan</strong>Tempalte Laporan (RO – SPV – Regional) </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── S13: CLOSING ── -->
+<div class="slide" id="s13">
+  <div class="bg-grid"></div>
+  <div style="position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(200,146,42,.05),transparent 70%);left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;"></div>
+  <div class="cls-wrap">
+    <div class="cls-ring" style="width:clamp(280px,45vw,560px);height:clamp(280px,45vw,560px);border:1px solid rgba(200,146,42,.06);"></div>
+    <div class="cls-ring" style="width:clamp(180px,30vw,380px);height:clamp(180px,30vw,380px);border:1px solid rgba(200,146,42,.1);"></div>
+    <div class="cls-lbl">Juknis KPI RO 2026 · Bank Woori Saudara</div>
+    <div class="cls-title">Adil, Terukur,<br>dan Relevan</div>
+    <div class="cls-sub">Sistem penilaian baru ini dirancang agar setiap RO dinilai secara fair — bukan hanya dari produksi, namun juga dari kualitas pengelolaan portofolio yang sudah berjalan.</div>
+    <div class="pillars">
+      <div class="pillar">⚖️ Adil</div>
+      <div class="pillar">📐 Terukur</div>
+      <div class="pillar">🎯 Relevan</div>
+      <div class="pillar">🔄 Transparan</div>
+      <div class="pillar">📈 Berkembang</div>
+    </div>
+    <div class="cls-contact">Pertanyaan & klarifikasi: <strong>Divisi Bisnis Pensiun & Divisi Consumer</strong> melalui jalur komunikasi resmi yang telah ditetapkan</div>
+  </div>
+</div>
+
+</div><!-- /deck -->
+
+<div class="nav">
+  <button class="nbtn" onclick="prev()">← Prev</button>
+  <div class="dots" id="dots"></div>
+  <span class="ctr" id="ctr">1 / 15</span>
+  <button class="nbtn" onclick="next()">Next →</button>
+</div>
+<div class="khint"><kbd>←</kbd> <kbd>→</kbd> navigasi</div>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const N = slides.length;
+let cur = 0;
+const dotsEl = document.getElementById('dots');
+slides.forEach((_,i)=>{ const d=document.createElement('div'); d.className='dot'+(i===0?' active':''); d.onclick=()=>go(i); dotsEl.appendChild(d); });
+function update(){ slides.forEach((s,i)=>s.classList.toggle('active',i===cur)); document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===cur)); document.getElementById('ctr').textContent=`${cur+1} / ${N}`; }
+function next(){ if(cur<N-1){cur++;update();} }
+function prev(){ if(cur>0){cur--;update();} }
+function go(i){ cur=i; update(); }
+function goTo(i){ cur=i; update(); }
+document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowDown')next(); if(e.key==='ArrowLeft'||e.key==='ArrowUp')prev(); if(e.key==='Home')go(0); if(e.key==='End')go(N-1); });
+let sx=0;
+document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;});
+document.addEventListener('touchend',e=>{ const d=sx-e.changedTouches[0].clientX; if(Math.abs(d)>50){d>0?next():prev();} });
+function fitSlides(){
+  document.querySelectorAll('.si').forEach(si=>{
+    si.style.transform='';
+    si.style.width='';
+    const slide=si.parentElement;
+    const availH=slide.clientHeight;
+    const availW=slide.clientWidth;
+    const contentH=si.scrollHeight;
+    const contentW=si.scrollWidth;
+    const scaleH=availH/contentH;
+    const scaleW=availW/contentW;
+    const scale=Math.min(scaleH,scaleW,1);
+    if(scale<1){
+      si.style.transform=`scale(${scale})`;
+      si.style.width=(availW/scale)+'px';
+    }
+  });
+}
+fitSlides();
+window.addEventListener('resize',fitSlides);
+</script>
+</body>
+</html>
